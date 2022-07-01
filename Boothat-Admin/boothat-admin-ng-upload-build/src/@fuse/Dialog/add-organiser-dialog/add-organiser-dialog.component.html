@@ -1,0 +1,65 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Event Type Details</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0 p-0" fusePerfectScrollbar>
+
+        <form class="form" [formGroup]="form">
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div class="form-field mx-0" style="width: 100%;">
+                    <label>Organiser name<span class="err"> *
+                        </span> </label>
+                    <input type="text" formControlName="name" matInput>
+                    <span class="err" style="display: block;" *ngIf="form?.get('name').hasError('required') && form?.get('name').touched">
+                        This field is <strong>required</strong>
+                    </span>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div class="form-field mx-0" style="width: 100%;">
+                    <label>Website</label>
+                    <input type="text" formControlName="website" matInput>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div class="form-field mx-0" style="width: 100%;">
+                    <label>Contact no</label>
+                    <input type="text" pattern="^(\+\d{1,3}[- ]?)?\d{10}$" formControlName="mobile" matInput>
+                    <span class="err" style="display: block;" *ngIf="form?.get('mobile').hasError('pattern') && form?.get('mobile').touched">
+                        Wrong contact number
+                    </span>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div fxFlex fxLayout="column" fxLayoutGap="5px">
+
+                    <div class="cust-image" *ngIf="croppedImageBase64">
+                        <img [src]="croppedImageBase64">
+                        <mat-icon class="position-absolute" *ngIf="croppedImageBase64"
+                            style="cursor: pointer;top:5px;right:5px;text-shadow: 0px 1px 10px #0000007d;color: white;"
+                            (click)="removeImage()">
+                            cancel</mat-icon>
+                    </div>
+
+                    <input type="file" #fileUpload (change)="readUrl($event)" style="display: none;">
+                    <button *ngIf="!croppedImageBase64" mat-flat-button class="cust-btn"
+                        (click)="fileUpload.click()">Upload
+                        Logo</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16 pt-0" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+
+        <button mat-flat-button color="primary" [mat-dialog-close]="[false]">Cancel</button>
+        <button mat-flat-button class="cust-btn" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+    </div>
+</div>

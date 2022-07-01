@@ -1,0 +1,131 @@
+
+    <div id="products" class="page-layout carded fullwidth inner-scroll userPages">
+        <div class="after-login-pages">
+            <mat-card>
+                <div class="first-row">
+                    <div class="page-title">
+                        Pages
+                    </div>  
+                        
+                    <div style="display:inline-block">
+                        <div class="status-drp">
+                            <mat-select placeholder="Language"
+                            [(value)]="this.selectedLanguage"
+                            (selectionChange)="selectLanguage($event)">
+                                <mat-option [value]="1">
+                                    
+                                    <div class="d-flex align-items-center">
+                                        <div class="width50AllMedia">ENGLISH</div>
+                                        <div class="width50AllMedia">
+                                            <img src="assets/images/flags/en-uk.png" class="flag-image">
+                                        </div>
+                                      
+                                    </div>
+                                </mat-option>
+                                <mat-option [value]="2">
+                                    <div class="d-flex align-items-center">
+                                        <div class="width50AllMedia">ARABIC</div>
+                                        <div class="width50AllMedia">
+                                            <img src="assets/images/flags/ar.png" class="flag-image">
+                                        </div>
+                                      
+                                    </div>
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div>  
+                         
+                </div>
+                <div style="padding-top:15px ;"></div>
+                <mat-divider inset="true"></mat-divider>
+                <div style="padding-top:20px ;"></div>
+                <mat-tab-group (focusChange)="tabChanged($event)" [selectedIndex]="0" animationDuration="1000ms">
+                    <mat-tab label="Terms & Conditions">
+                        <!-- <mat-card> -->
+                            <!-- <form action=""> -->
+                                <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                                    <mat-label>Title</mat-label>
+                                    <input matInput [(ngModel)]="pageTitle">
+                                </mat-form-field>
+                            <!-- </form> -->
+            
+                            <quill-editor [modules]="quillConfig" 
+                                (contentChanged)="quillContentChanged($event)"
+                                [(ngModel)]="quillData"></quill-editor>
+            
+                            <div class="btn-group">
+                                <button class="save-btn"   
+                                mat-flat-button
+                                (click)="submitContent()"
+                                >Submit</button>
+                                <!-- <button class="remove-btn">Cancel</button> -->
+                            </div>
+                        <!-- </mat-card> -->
+                    </mat-tab>
+                    <mat-tab label="Privacy & Policy">
+                        <!-- <mat-card> -->
+                            <!-- <form action=""> -->
+                                <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                                    <mat-label>Title</mat-label>
+                                    <input matInput [(ngModel)]="pageTitle">
+                                </mat-form-field>
+                            <!-- </form> -->
+                            <quill-editor [modules]="quillConfig" 
+                                (contentChanged)="quillContentChanged($event)"
+                                [(ngModel)]="quillData"
+                                class="quill-editor" >
+                            </quill-editor>
+                            <div class="btn-group">
+                                <button class="save-btn"
+                                mat-flat-button
+                                 (click)="submitContent()">Submit</button>
+                                <!-- <button class="remove-btn">Cancel</button> -->
+                            </div>
+                        <!-- </mat-card> -->
+                    </mat-tab>
+                    <mat-tab label="About Us">
+                        <!-- <mat-card> -->
+                            <!-- <form action=""> -->
+                                <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                                    <mat-label>Title</mat-label>
+                                    <input matInput [(ngModel)]="pageTitle">
+                                </mat-form-field>
+                            <!-- </form> -->
+            
+                            <quill-editor [modules]="quillConfig" 
+                                (contentChanged)="quillContentChanged($event)"
+                                [(ngModel)]="quillData">
+                            </quill-editor>
+                            <div class="btn-group">
+                                <button class="save-btn" 
+                                mat-flat-button
+                                (click)="submitContent()">Submit</button>
+                                <!-- <button class="remove-btn">Cancel</button> -->
+                            </div>
+                        <!-- </mat-card> -->
+                    </mat-tab>
+                    <mat-tab label="FAQ">
+                        <!-- <mat-card> -->
+                            <!-- <form action=""> -->
+                                <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                                    <mat-label>Title</mat-label>
+                                    <input matInput [(ngModel)]="pageTitle">
+                                </mat-form-field>
+                            <!-- </form> -->
+            
+                            <quill-editor [modules]="quillConfig" 
+                                (contentChanged)="quillContentChanged($event)"
+                                [(ngModel)]="quillData">
+                            </quill-editor>
+                            <div class="btn-group">
+                                <button class="save-btn" 
+                                mat-flat-button
+                                (click)="submitContent()">Submit</button>
+                                <!-- <button class="remove-btn">Cancel</button> -->
+                            </div>
+                        <!-- </mat-card> -->
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
+        </div>
+    </div>

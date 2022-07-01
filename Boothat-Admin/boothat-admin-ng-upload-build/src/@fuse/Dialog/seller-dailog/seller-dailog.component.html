@@ -1,0 +1,59 @@
+<div class="position-relative"> 
+
+    <div class="manage-dailog">
+        
+        <h2 class="text-center heading">Select {{notifyType=='1'? 'Buyer':'Seller'}}</h2>
+        <div class="search-box" >
+            <input #search placeholder="Search" [(ngModel)]="searchText">
+            <span class="search-clear" (click)="clearSearch()">
+                <mat-icon>close</mat-icon>
+            </span>
+            <span class="search-icon" (click)="filterData(search.value)">
+                <mat-icon>search</mat-icon>
+            </span>
+        </div>
+        <div class="notification-filter" *ngIf="this.notificationData?.length ; else elseBlock">
+            <div class="d-flex align-items-center justify-content-between flex-wrap"
+            *ngIf="search.value == ''">
+                
+                <div class="d-flex align-items-center margin-10">
+                    <img src="assets/images/groups.png" alt="" class="seller-img"  [ngClass]="this.selectAll.photo? '':'borderImg'">
+                    <span class="title">{{this.selectAll.user_name}}</span>
+                </div>
+                <mat-checkbox 
+                (change)="checkAll(this.selectAll,$event)" 
+                [checked]="this.selectAll.Allchecked"
+                color="primary"
+                [indeterminate]="someComplete()"></mat-checkbox>
+            </div>
+            
+            <div class="d-flex align-items-center justify-content-between flex-wrap " *ngFor="let i of this.selectAll.notificationData | filter:searchText">
+                
+                <div class="d-flex align-items-center margin-10">
+                    <img [src]="i.photo? i.photo: 'assets/icons/dist-profile-blank.png'" alt="" class="seller-img"  [ngClass]="i.photo? '':'borderImg'">
+                    <span class="title">{{i.user_name}}</span>
+                </div>
+                <mat-checkbox 
+                (change)="selectNotifyedTo(i,$event)"
+                [(ngModel)]="i.checked"  
+                (ngModelChange)="updateAllComplete()"  
+                ></mat-checkbox>
+            </div>
+           
+
+           
+        </div>
+        <ng-template #elseBlock >
+            <div class="center">
+                <mat-spinner  [diameter]="50"></mat-spinner>
+            </div>  
+        </ng-template>
+        <div class="text-center button-wrapper">
+            <div class="">
+            <button mat-flat-button class="action-btn"color="primary" (click)="close()">Continue</button>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

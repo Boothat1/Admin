@@ -1,0 +1,110 @@
+.remove-btn,
+.restrict-btn{
+    background: #D10101;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 14px;
+    width: 40%;
+    font-family: 'ManropeRegular';
+}
+.remove-btn{
+    background: #FFE6E2;
+    color: #D10101;
+    margin-left: 15px;
+}
+.btn-group{
+    padding: 0 30px;
+    text-align: center;
+}
+.close-btn{
+    text-align: right;
+    margin: -10px -10px 0 0;
+    cursor: pointer;
+    user-select: none;
+    color: #969B9F;
+}
+.manage-dailog{
+    height: 450px;
+    overflow-x: scroll!important;
+    .heading{
+        font-family: 'manropeBold';
+        font-size: 2rem;
+    }
+}
+.manage-dailog::-webkit-scrollbar {
+    // width: 3em!important;
+    height: 1em!important;
+}
+.manage-dailog img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+.search-box{
+    width: 96%;
+}
+h2{
+    margin: 0;
+}
+.seller-img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.justify-content-end{
+    justify-self: end!important;
+}
+.justify-content-between{
+    justify-content:space-between;
+}
+.margin-10{
+    margin: 10px 0; 
+}
+::ng-deep .mat-checkbox-background, .mat-checkbox-frame{
+  border: 3px solid #000 !important;  
+}
+.notification-filter{
+    min-height:200px;
+    padding-bottom:45px;
+    padding-right: 10px;
+    padding-left: 5px;
+    .title{
+        font-family: 'manropeSemiBold';
+    }
+}
+.button-wrapper{
+    position:absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%,0);
+    z-index:1;
+    width: 100%;
+    height: 35px;
+    padding-top: 10px;
+    background-color: #fff;
+}
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.search-box:focus-within .search-icon mat-icon{
+    color: #1E1E1E!important;
+    line-height: auto!important;
+}
+.search-box:focus-within .search-icon{
+    left:6px!important;
+    background-color: transparent!important;
+    border-radius: 0!important;
+    padding: 0!important;
+    top: 1px;
+}
+.search-box:focus-within input{
+    padding-left: 24px!important;
+    // padding-right: 0!important;?
+}

@@ -1,0 +1,336 @@
+<div id="dashboard-project" class="page-layout simple right-sidebar" fxLayout="row">
+
+    <!-- CENTER -->
+    <div class="center" fusePerfectScrollbar style="background: #F0F9FF;">
+
+        <!-- HEADER -->
+        <!-- <div class="header p-24 pb-0" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+
+        </div> -->
+
+        <!-- / HEADER -->
+
+        <!-- CONTENT -->
+        <div class="content" fxLayout="column">
+            <div class="first-row ">
+                <span class="welcome-text">
+                    Overview
+                </span>
+                <div class="d-flex">
+                    <!-- <div class="search-box" [ngClass]="{'search-box-with-data':search.value!=''}">
+                        <input #search placeholder="Search" [(ngModel)]="searchText">
+                        <span class="search-clear" (click)="clearSearch()">
+                            <mat-icon>close</mat-icon>
+                        </span>
+                        <span class="search-icon" (click)="filterData(search)">
+                            <mat-icon>search</mat-icon>
+                        </span>
+                    </div> -->
+                  
+                    <div class="custom-drop">
+                        <div class="status-drp ">
+                            <mat-icon>date_range</mat-icon>
+
+                            <mat-select placeholder="All" (selectionChange)="commonFilter($event)">
+
+                                <mat-option [value]="item.key" *ngFor="let item of Enums.TIME_FILTER | keyvalue">
+                                    {{item.value}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 cards -->
+            <div fxLayout="column" class="content-cards" fxLayoutAlign="start" fxLayout.gt-sm="row"
+                fxLayoutAlign.gt-sm="start start">
+
+
+
+                <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+                    <div class="p-16 pb-0 first-card linear-card" fxLayout="wrap-reverse" routerLink="/customers">
+
+                        <div class="linear-card-heading">
+                            <div class="h3">
+                                <!-- <mat-icon class="blue-fg">shopping_basket</mat-icon>  -->
+                                <span class="card-title align-top">TOTAL BUYERS</span>
+                            </div>
+                            <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">               
+                               {{this._projectDashboardService.dashboardStat?.userCount}}
+                            </div>
+                            <div class="increasedBy">
+                                {{this._projectDashboardService.dashboardStat?.userPercantage}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+                    <div class="p-16 pb-0 second-card linear-card" fxLayout="wrap-reverse">
+
+                        <div class="linear-card-heading">
+                            <div class="h3">
+                                <!-- <mat-icon class="blue-fg">shopping_basket</mat-icon>  -->
+                                <span class="card-title align-top">TOTAL SELLERS </span>
+                            </div>
+                            <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                               {{this._projectDashboardService.dashboardStat?.merchantCount}}
+                            </div>
+                            <div class="increasedBy">
+                                {{this._projectDashboardService.dashboardStat?.merchantPercantage}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+                    <div class="p-16 pb-0 third-card linear-card" fxLayout="wrap-reverse">
+
+                        <div class="linear-card-heading">
+                            <div class="h3">
+                                <!-- <mat-icon class="blue-fg">shopping_basket</mat-icon>  -->
+                                <span class="card-title">SALES</span>
+                            </div>
+                            <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                              {{this._projectDashboardService.dashboardStat?.salesCount}}
+                            </div>
+                            <div class="increasedBy">
+                                {{this._projectDashboardService.dashboardStat?.salesPercantage}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div [@animate]="{value:'*',params:{y:'100%'}}" class="widget chart-row" fxLayout="row" fxFlex="100" fxLayout.sm="column" fxLayout.md="column" fxLayout.xs="column"
+                fxLayoutGap="25px" fxLayoutGap.xs="0px" fxLayoutGap.sm="0px">
+                <div fxLayout="column" fxFlex="68.5" fxFlex.xs="46" fxFlex.sm="50" fxFlex.md="50" >
+                    <mat-card style="margin-top: 20px;">
+                        <div class="first-row">
+                            <div>
+                                <div class="chart-subheading">
+                                    OVERVIEW
+                                </div>
+                                <div class="chart-heading">
+                                    Overall Sales
+                                </div>
+                            </div>
+                            <!-- <div>
+                                <button class="btn-primary" mat-button>Month</button>
+                                <button class="btn-secondary" mat-button>Year</button>
+                            </div> -->
+                        </div>
+                        <div id="ticket-chart" class="users-chart">
+                            <apx-chart [stroke]="totalPointSaleOptions.stroke" [states]="totalPointSaleOptions.states"
+                                [markers]="totalPointSaleOptions.markers" [series]="totalPointSaleOptions.series"
+                                [chart]="totalPointSaleOptions.chart" [dataLabels]="totalPointSaleOptions.dataLabels"
+                                [plotOptions]="totalPointSaleOptions.plotOptions" [yaxis]="totalPointSaleOptions.yaxis"
+                                [xaxis]="totalPointSaleOptions.xaxis" [legend]="totalPointSaleOptions.legend"
+                                [colors]="totalPointSaleOptions.colors" 
+                                [grid]="totalPointSaleOptions.grid"
+                                [fill]="totalPointSaleOptions.fill"
+                                [responsive]="totalPointSaleOptions.responsive"
+                                ></apx-chart>
+                        </div>
+                    </mat-card>
+                </div>
+                <div fxLayout="column" fxFlex="31.5" fxFlex.xs="50" fxFlex.sm="50" fxFlex.md="50" >
+                    <mat-card style="margin-top: 20px; min-height: 490px;" class="top-sellers-wrapper">
+
+                        <div class="chart-heading">
+                            Top Sellers
+                        </div>
+                        <!-- <hr> -->
+                        <div style="margin-top:20px;"></div>
+                        <mat-divider></mat-divider>
+                        <div style="padding:1px 20px 0 20px; ">
+                            <div style="margin-top:20px;"></div>
+                            <div *ngFor="let i of this.dashboardData.topSellers">
+                                <button mat-button>
+                                    <div class="distributor cursor-pointer"  routerLink="/seller-manage/detail" [queryParams]="{'id':i.id}">
+                                        <img class="profile-img borderImg" [src]="i.photo? i.photo:'assets/icons/dist-profile-blank.png'">
+                                        <div>
+                                            <div class="dist-name">{{i.user_name}}</div>
+                                            <div class="online-dot" 
+                                            [innerHTML]="i.active_status? 'Available':'Unavailable'"
+                                            [ngClass]="i.active_status ==0? 'offline-dot':''"></div>
+                                        </div>
+                                        
+                                    </div>  
+                                </button>
+                                
+                                
+                                <mat-divider inset="true"></mat-divider>  
+                            </div>
+                                                    
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+            <div [@animate]="{value:'*',params:{y:'100%'}}" class="widget chart-row" fxLayout="row" fxFlex="100" fxLayout.sm="column" 
+            fxLayout.xs="column" fxLayout.md="column"
+                fxLayoutGap="20px" fxLayoutGap.xs="0px" fxLayoutGap.sm="0px">
+                <div fxLayout="column" fxFlex="50" fxFlex.xs="46" fxFlex.sm="50" fxFlex.md="50">
+                    <mat-card style="margin-top: 20px; min-height: 428px;">
+                        <div class="first-row ">
+                            <div style="margin-bottom:20px;">
+                                <div class="chart-subheading">
+                                    OVERVIEW
+                                </div>
+                                <div class="chart-heading">
+                                    Product Comparison
+                                </div>
+                            </div>
+                            <div class="custom-drop">
+                                <div class="status-drp " style="margin: 0px 5px 20px 5px;">
+                                  
+        
+                                    <mat-select placeholder="Category" style="width:100%!important" 
+                                    (selectionChange)="categoryFilter($event)">
+        
+                                        <mat-option [value]="item.id" *ngFor="let item of this._projectDashboardService.productCategory">
+                                            {{item.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="prodComparisonchart" *ngIf="!this.dashboardData.isHideCompareChart;else noDataInComparisonChart">
+                            <apx-chart [series]="prodComparisonchartOptions.series"
+                                [chart]="prodComparisonchartOptions.chart"
+                                [dataLabels]="prodComparisonchartOptions.dataLabels"
+                                [plotOptions]="prodComparisonchartOptions.plotOptions"
+                                [xaxis]="prodComparisonchartOptions.xaxis" 
+                                [legend]="prodComparisonchartOptions.legend"
+                                [legend]="prodComparisonchartOptions.legend"
+                                [fill]="prodComparisonchartOptions.fill">
+                            </apx-chart>
+                        </div>
+                        <ng-template #noDataInComparisonChart>
+                            <div class="noDataAvail">
+                                <div>No Data Available!</div>
+                            </div>
+                        </ng-template>
+                        
+                    </mat-card>
+                </div>
+              
+                <div fxLayout="column" fxFlex="50" fxFlex.xs="50" fxFlex.sm="50" fxFlex.md="50">
+                <mat-card style="margin-top: 20px;  ">
+                    <div class="first-row">
+                        <div >
+                            <div class="chart-subheading">
+                                OVERVIEW
+                            </div>
+                            <div class="chart-heading">
+                                Revenue
+                            </div>
+                        </div>
+                        <!-- <div>
+                            <button class="btn-primary" mat-button>Month</button>
+                            <button class="btn-secondary" mat-button>Year</button>
+                        </div> -->
+                    </div>
+                    <div id="budgetChart">
+                        <apx-chart
+                          [series]="budgetChartOptions.pieSeries"
+                          [chart]="budgetChartOptions.chart"
+                          [labels]="budgetChartOptions.labels"
+                          [legend]="budgetChartOptions.legend"
+                          [plotOptions]="budgetChartOptions.plotOptions"
+                          [dataLabels]="budgetChartOptions.dataLabels"
+                          [fill]="budgetChartOptions.fill"
+                          [responsive]="budgetChartOptions.responsive"
+                          [tooltip]="budgetChartOptions.tooltip"
+                          [stroke]="budgetChartOptions.stroke"
+                        ></apx-chart>
+                      </div>
+                      
+                
+                </mat-card>
+            </div>
+            </div>
+            <mat-card class="dashboard-table">
+                <div class="first-row">
+                    <div class="chart-heading">
+                        Recent Sellers List
+                    </div>
+                  
+                </div>
+                <div style="margin-top:20px;"></div>
+                <mat-divider inset="true"></mat-divider> 
+                <div style="margin-top:20px;"></div>
+                <div class="project-table">
+                    <table mat-table [dataSource]="dataSource | paginate: config" matSort class=" mat-elevation-z8">
+
+                        <ng-container matColumnDef="sr">
+                            <th mat-header-cell *matHeaderCellDef>S No. </th>
+                            <td mat-cell *matCellDef="let element; let i = index"
+                            routerLink="/seller-manage/detail" [queryParams]="{'id':element.id}"> {{i+1}} </td>
+                        </ng-container>
+    
+    
+    
+    
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef> Name </th>
+                            <td mat-cell *matCellDef="let element"
+                            routerLink="/seller-manage/detail" [queryParams]="{'id':element.id}"> {{element.first_name}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="img">
+                            <th mat-header-cell *matHeaderCellDef> </th>
+                            <td mat-cell *matCellDef="let element"> 
+                            <img src="{{element.photo ? element.photo:'assets/icons/dist-profile-blank.png'}} " alt="" class="profile-img-table borderImg"
+                            routerLink="/seller-manage/detail" [queryParams]="{'id':element.id}">    
+                            </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="username">
+                            <th mat-header-cell *matHeaderCellDef> Username </th>
+                            <td mat-cell *matCellDef="let element"
+                            routerLink="/seller-manage/detail" [queryParams]="{'id':element.id}"> 
+                                <!-- {{element.user_name}}  -->
+                                {{(element.user_name.length > 15)?(element.user_name | slice:0:15 )+'...':(element.user_name) }} 
+                            </td>
+                        </ng-container>
+    
+    
+                        <ng-container matColumnDef="mobile">
+                            <th mat-header-cell *matHeaderCellDef> Mobile No. </th>
+                            <td mat-cell *matCellDef="let element"
+                            routerLink="/seller-manage/detail" [queryParams]="{'id':element.id}"> {{element.phone}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="country">
+                            <th mat-header-cell *matHeaderCellDef> Country </th>
+                            <td mat-cell *matCellDef="let element"
+                            routerLink="/seller-manage/detail" [queryParams]="{'id':element.id}"> {{element.country}} </td>
+                        </ng-container>
+    
+                        <ng-container matColumnDef="email">
+                            <th mat-header-cell *matHeaderCellDef> Email </th>
+                            <td mat-cell *matCellDef="let element"
+                            routerLink="/seller-manage/detail" [queryParams]="{'id':element.id}">
+                                {{(element.email.length > 15)?(element.email | slice:0:15 )+'...':(element.email) }} 
+                                
+                            
+                            </td>
+                        </ng-container>
+    
+    
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>  
+               
+            </mat-card>
+            <!-- / CONTENT -->
+        </div>
+        <!-- / CENTER -->
+    </div>

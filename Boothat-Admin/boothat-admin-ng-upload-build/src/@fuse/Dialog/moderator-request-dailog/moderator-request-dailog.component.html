@@ -1,0 +1,61 @@
+<div class="manage-dailog">
+    <div class="close-btn" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+    </div>
+    <div style="text-align: center;">
+        <img src="assets/images/tia/Oval.png" alt="">
+    </div>
+    <form action="" class="form">
+        <div class="form-field">
+            <label>Name</label>
+            <input type="text" matInput disabled placeholder="Hydrogen">
+        </div>
+        <div class="form-field">
+            <label>Join Date</label>
+            <input type="text" matInput disabled placeholder="02/10/1999">
+        </div>
+        <div class="form-field">
+            <label>Mobile No.</label>
+            <input type="text" matInput disabled placeholder="1234567890">
+        </div>
+        <div class="form-field">
+            <label>City</label>
+            <input type="text" matInput disabled placeholder="indoor">
+        </div>
+        <div class="plant-section">
+            <div class="planted">
+                <div>
+                    <label for="">Plants Planted</label>
+                </div>
+                <div class="img">
+                    <img src="assets/images/tia/park_black_24dp.svg" alt="" width="23" height="26">
+                </div>
+                <div class="number">
+                    300
+                </div>
+                <div class="time">
+                    5 in a Month
+                </div>
+            </div>
+            <div class="watered">
+                <div>
+                    <label for="">Plants Planted</label>
+                </div>
+                <div class="img">
+                    <img src="assets/images/tia/watered.svg" alt="" width="23" height="26">
+                </div>
+                <div class="number">
+                    300
+                </div>
+                <div class="time">
+                    5 in a Month
+                </div>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="restrict-btn">Accept</button>
+            <!-- <button type="button" class="remove-btn" (click)="closeDialog();confirmDailog()">Remove</button> -->
+        </div>
+    </form>
+
+</div>

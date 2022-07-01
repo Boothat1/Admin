@@ -1,0 +1,49 @@
+.form-field{
+    width: 30%;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.form .form-field.textarea{
+    width: 96%;
+   
+}
+.form .form-field.textarea textarea{
+    border: none!important;
+}
+
+.form .form-field.textarea textarea.reject-reason{
+    border: 1px solid red!important;
+}
+.form .form-field.image{
+    width: 24%;
+    text-align: center;
+    border-radius:3px ;
+    border: 5px solid #e1e1e1;
+}
+.position-relative{
+    position: relative;
+}
+.position-relative input{
+    padding: 13px 37px 13px 13px;
+}
+
+.my-icon{
+    position: absolute;
+    top: 38px;
+    right: 15px;
+    cursor: pointer;
+}
+.product-img{
+    margin: 0 10px;
+    width: 90%;
+    height: 200px;
+    object-fit: contain;
+    padding: 10px;
+}
+.width-50{
+    width: 46%!important;
+}
+.width-75{
+    width: 63%!important;
+}

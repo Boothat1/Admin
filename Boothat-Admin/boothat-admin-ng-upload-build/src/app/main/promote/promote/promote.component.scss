@@ -1,0 +1,34 @@
+button.accept{
+    line-height: 35px!important;
+    width: 135px!important;
+    text-transform: capitalize !important;
+}
+.banner-img{
+    width: 120px;
+    height: 75px;
+    border-radius: 5px;
+    margin: 15px 0;
+    object-fit: contain;
+}
+.prmry-btn,
+.scnd-btn{
+    border-radius: 50%;
+    padding-bottom: 10px;
+    mat-icon{
+        font-size: 15px;
+    }
+}
+
+// .main-drop{
+//     position: absolute;
+//     right: 0px;
+//     top: -15px;
+//     z-index: 5;
+// }
+button:disabled{
+    opacity: 20%;
+}
+
+::ng-deep .mat-tab-body-content {
+    overflow: visible !important;
+  }

@@ -1,0 +1,275 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- CENTER -->
+    <div style="padding: 30px 20px 15px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this._commonService.goBack()">
+                        arrow_back
+                    </span>
+                    <span class="table-title">
+
+                        Order Detail
+                    </span>
+                </div>
+            </div>
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <div class="first-row">
+                <div class="table-subtitle">
+                    Buyer Details
+                </div>
+                <div>
+                    <button type="submit" mat-flat-button class="save-btn accept" routerLink="/buyer-manage/detail"
+                        [queryParams]="{'id':this.orderDetails?.order?.user?.id}">View</button>
+                </div>
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field">
+
+
+                </div>
+                <div class="form-field">
+                    <div class="profile-file">
+                        <img [src]="this.orderDetails?.order?.user?.photo ? this.orderDetails?.order?.user?.photo:'assets/icons/dist-profile-blank.png'" [ngClass]="'borderImg'" alt="">
+                    </div>
+                </div>
+                <div class="form-field">
+
+
+                </div>
+                <div class="form-field position-relative">
+                    <label>Buyer Name</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.user?.user_name">
+                    <!-- <mat-icon matPrefix class="my-icon" routerLink="/seller-manage/detail"
+                    [queryParams]="{'id':this.detailService.singleProduct?.merchant?.id}"><span class="material-icons">
+                            visibility
+                        </span>
+                    </mat-icon> -->
+
+                </div>
+                <div class="form-field">
+                    <label>Email Id</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.user?.email">
+                </div>
+                <div class="form-field">
+                    <label>Mobile Number</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.user?.phone">
+                </div>
+            </div>
+        </mat-card>
+
+</div>
+        <div style="padding: 15px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div class="table-subtitle">
+                    Shop Details
+                </div>
+                <div>
+                    <button type="submit" 
+                        mat-flat-button 
+                        class="save-btn accept" 
+                        routerLink="/seller-manage/detail"
+                        [queryParams]="{'id' : this.orderDetails?.shop?.merchantId}">View</button>
+                </div>
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field">
+
+
+                </div>
+                <div class="form-field">
+                    <div class="profile-file">
+                        <img [src]=" this.orderDetails?.shop?.photo ? this.orderDetails?.shop?.photo:'assets/icons/dist-profile-blank.png'"
+                            [ngClass]="'borderImg'" alt="">
+                    </div>
+                </div>
+                <div class="form-field">
+
+
+                </div>
+                <div class="form-field">
+                    <label>Seller Name</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.shop?.merchantName">
+                </div>
+
+                <div class="form-field">
+                    <label>Marketplace</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.shop?.marketPlace">
+                </div>
+                <div class="form-field">
+                    <label>Whatsapp Number</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.shop?.whatsappNumber">
+                </div>
+            </div>
+        </mat-card>
+        </div>
+        <div style="padding: 15px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div class="table-subtitle">
+                    Order Status
+                </div>
+            </div>
+
+            <div class="d-flex form justify-content-around flex-wrap">
+
+                <div class="form-field">
+                    <label>Order Id</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.shop?.orderId">
+                </div>
+                <div class="form-field">
+                    <label>Order Date</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.orderDate">
+                </div>
+
+             
+                <div class="form-field">
+                    <label>SubTotal</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.subTotal">
+                </div>
+
+            
+
+                <div class="form-field">
+                    <label>Shipping Charges</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.shippingCharge">
+                </div>
+
+                <div class="form-field">
+                    <label>Promo Code</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.promoCode">
+                </div>
+    
+                <div class="form-field">
+                    <label>Total</label>
+                    <input type="text" matInput disabled [value]="this.orderDetails?.order?.total">
+                </div>
+
+
+
+
+                    <div class="form-field position-relative left-icon-input-wrapper"
+                    *ngIf="this.orderDetails?.order?.isRated">
+                        <label>Rating</label>
+                        <input type="text" matInput disabled [value]="this.orderDetails?.order?.rating+' Rating'">
+                        <img src="assets/images/coin.png" alt="">
+                    </div>
+                    <div class="form-field width-75" *ngIf="this.orderDetails?.order?.isRated">
+                        <label> Rating Description</label>
+                        <div class="">
+                            <input type="text" matInput  disabled [value]="this.orderDetails?.order?.ratingDescription">
+                        </div>
+                    </div>
+              
+                
+
+                <div class="form-field textarea width-50">
+                    <label>Shipping Address</label>
+                    <textarea type="text" matInput disabled [value]="
+                    this.orderDetails?.order?.deliveryAddress?.street1+' '+this.orderDetails?.order?.deliveryAddress?.street2+','+this.orderDetails?.order?.deliveryAddress?.city+','+this.orderDetails?.order?.deliveryAddress?.state+','+this.orderDetails?.order?.deliveryAddress?.country
+                "></textarea>
+                </div>
+                <div class="form-field textarea width-50">
+                    <label>Billing Address</label>
+                    <textarea type="text" matInput disabled 
+                    [value]="this.orderDetails?.order?.billingAddress?.street1+' '+this.orderDetails?.order?.billingAddress?.street2+','+this.orderDetails?.order?.billingAddress?.city+','+this.orderDetails?.order?.billingAddress?.state+','+this.orderDetails?.order?.billingAddress?.country"
+                    ></textarea>
+                </div>
+                <div class="form-field">
+                    <label>Order Status</label>
+                    <div class="">
+                        <mat-select placeholder="Order Status" [value]="orderStatus" class="secondary_input"
+                        #updatedOrderStatus [disabled]="this.orderDetails?.order?.orderStatus == 2">
+                            <mat-option [value]="item.key" *ngFor="let item of enum.ORDER_STATUS | keyvalue"
+                            [disabled]="item.key!= nextStatus">
+                                
+                                <span *ngIf="this.orderDetails?.order?.orderStatus == 2; else notCanceledStatus">CANCELED</span>
+                                <ng-template #notCanceledStatus>
+                                    {{item.value}}
+                                </ng-template>
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div>
+
+                <div class="form-field width-75" [style.display]="orderStatus== 6?'none':''">
+                    <label>Address</label>
+                    <div class="">
+                        <input type="text" matInput class="secondary_input" [(ngModel)]="statusMsg">
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button 
+                type="submit" 
+                mat-flat-button 
+                class="save-btn"
+                [disabled]="orderStatus== 6" 
+                (click)="updateOrderStatus(updatedOrderStatus,this.orderDetails.order.id)"
+                [innerHTML]="'Update'"></button>
+                <!-- {{!this.promoForm.valid && this.croppedImageBase64==''}} <br>
+                {{!this.promoForm.valid}} <br>
+                {{this.croppedImageBase64==''}} -->
+            </div>
+            
+        </mat-card>
+        </div>
+        <div style="padding: 15px 20px;">
+        <mat-card>
+            <div class="project-table">
+                <div class="first-row">
+                    <div class="table-subtitle">
+                        Products List
+                    </div>
+                </div>
+                <table mat-table [dataSource]="dataSource " matSort class=" mat-elevation-z8">
+
+                    <ng-container matColumnDef="sr">
+                        <th mat-header-cell *matHeaderCellDef> S No.</th>
+                        <td mat-cell *matCellDef="let element; let i = index" >
+                            {{(i+1)}}
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+                        <td mat-cell *matCellDef="let element"> 
+                            <img [src]="element.photos_json | firstImgComaSepString" alt="" class="table-img">
+                            {{element?.product_name}}
+                         </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                        <td mat-cell *matCellDef="let element" > {{element?.category_name}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="quantity">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                        <td mat-cell *matCellDef="let element"> {{element?.quantity}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="singlePrice">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Single Price </th>
+                        <td mat-cell *matCellDef="let element" > {{element?.currency}} {{element?.single_price}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="kwd">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount </th>
+                        <td mat-cell *matCellDef="let element">{{element?.currency}}  {{element?.final_price}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"  (click)="goToDetail(row)"></tr>
+                </table>
+                <div style="text-align:center">
+                    <h2 *ngIf="this.dataSource.length ==0">No Records Found !</h2>
+                </div>
+            </div>
+        </mat-card>
+        </div>
+    </div>

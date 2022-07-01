@@ -1,0 +1,116 @@
+textarea{
+    border: none;
+}
+.notice-header{
+    background: #e9eaea;
+    border-radius:5px;
+    margin:0 15px 15px 15px!important;
+    padding: 15px;
+    text-transform: capitalize;
+    font-family:'ManropeRegular';
+}
+.search-box{
+    max-width:180px!important;
+    input{
+        width: 90%!important;
+        padding-right: 9px!important;
+    }
+}
+.d-flex{
+    display: flex;
+    justify-content: space-between;
+    width: 96%;
+    align-items: center;
+}
+.notice-left{
+    padding: 0 0 0 20px;
+}
+.notice-right{
+    padding: 30px 10px 0 0;
+}
+.warning{
+    font-family: 'ManropeBold';
+    font-size: 16px;
+    margin-left: 30px;
+}
+.time{
+    color: #969B9F;
+    font-size: 10px;
+}
+.desc{
+    font-size: 12px;
+    font-family: 'ManropeLight';
+    border-bottom: 1px solid #ccc;
+    margin: 10px 20px 10px 30px;
+    padding-bottom: 10px;
+}
+.date{
+    margin-right: 70px;
+}.label-upload-image{
+    color: #828282;
+}
+.del-icon {
+    margin: 10px;
+    cursor: pointer;
+    img{
+      margin:auto 5px
+    }
+  }
+  .form-field{width: 100%!important;}
+  .search-box{
+      margin: 10px  5px 10px 5px;
+  }
+  .manage-dailog{
+      width: 100%!important;
+  }
+
+  .radios-notifications{
+      color: #969B9F!important;
+  }
+  .select-seller-icon{
+      position: absolute;
+      top: 4px;
+      cursor: pointer;
+      right: 5px;
+      mat-icon{
+      font-size: 30px;
+      margin-top: -1.9px;
+      margin-right: 5.5px;
+      }
+  }
+  body.theme-green-light .mat-chip.mat-standard-chip{
+      background: #000!important;
+      color: #fff!important;
+  }
+  .mat-chip{
+    background-color:mat-color(#000);
+    color: mat-contrast(#fff);
+}
+  .mat-standard-chip{
+      border-radius: 5px !important;
+      background: #1E1E1E!important;
+      color: #fff!important;
+  }
+  .mat-standard-chip .mat-chip-remove, .mat-standard-chip .mat-chip-trailing-icon{
+      margin-left: 0!important;
+      background: transparent!important;
+  }
+  body.theme-green-light .mat-chip.mat-standard-chip .mat-chip-remove{
+      opacity: 1!important;
+  }
+  .mat-standard-chip .mat-chip-remove, .mat-standard-chip .mat-chip-trailing-icon mat-icon{
+    font-size: 18px!important;
+    margin-right: 5px;
+    margin-top: -1px ;
+    color: #fff!important;
+    opacity: 1!important;
+  }
+  .chips-wrapper{
+     min-height: 48px;
+  }
+  .date-range, .status-drp{
+      width:172px;
+  }
+  .notifacations-wrapper{
+    background-color: #F5F7F9;
+  }

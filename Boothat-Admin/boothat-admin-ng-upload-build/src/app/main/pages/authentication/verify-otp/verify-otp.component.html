@@ -1,0 +1,53 @@
+<div id="forgot-password" fxLayout="column">
+
+    <div id="forgot-password-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+        <div id="forgot-password-form" [@animate]="{value:'*',params:{duration:'300ms',y:'100px'}}">
+
+            <div class="logo">
+                <img src="assets/images/logos/rcp_logo.png">
+            </div>
+
+            <div class="title">Email Verification</div>
+
+            <!-- <div class="response">
+                
+                <mat-error *ngIf="showError"> {{responseMessage}} </mat-error>
+
+            </div> -->
+
+            <!-- <form *ngIf="!showSuccess" name="otpForm" [formGroup]="otpForm" novalidate>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Otp</mat-label>
+                    <input matInput formControlName="otp">
+                    <mat-icon matSuffix class="secondary-text">enhanced_encryption</mat-icon>
+                    <mat-error *ngIf="otpForm.get('otp').hasError('required')">
+                        Otp is required
+                    </mat-error>
+                   
+                </mat-form-field>
+
+                <button mat-flat-button class="submit-button" color="accent"
+                        aria-label="SEND RESET LINK"  (click)="verifyOtp()"
+                        [disabled]="otpForm.invalid || otpForm.pending">
+                    VERIFY OTP
+                </button>
+            </form> -->
+
+            <div class="message-box success"  *ngIf="showSuccess" >
+                {{responseMessage}}
+            </div>
+            <div class="message-box danger"  *ngIf="!showSuccess" >
+                {{responseMessage}}
+            </div>
+
+            <div class="login" fxLayout="row" fxLayoutAlign="center center">
+                <a class="link" [routerLink]="'/auth/login'">Go back to login</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,175 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+    <div style="padding: 40px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this.commonService.goBack()">
+                        arrow_back
+                    </span>
+                    <span class="page-title">
+                        Buyer Details
+                    </span>
+                </div>
+                <div>
+                    <!-- <button type="submit" mat-flat-button class="save-btn accept" routerLink="/buyer-manage/detail-overview">VIEW</button> -->
+                    <button type="submit" mat-flat-button class="save-btn accept" routerLink="/buyer-manage/edit" [queryParams]="{'id':singleUser?.user?.id}">View</button>
+                    <!-- <div style="display:inline-block">
+                        <div class="status-drp">
+                            <mat-select placeholder="this week" >
+                                <mat-option [value]="item.id" *ngFor="let item of selectData">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <form action=""  >
+                <div class="d-flex form justify-content-around flex-wrap">
+                    <div class="form-field">
+                        <label> First Name</label>
+                        <input type="text" matInput 
+                        [value]="singleUser?.user?.first_name? singleUser?.user?.first_name:''" readonly="readonly">
+                    </div>
+                    <div class="form-field">
+                        <label>Last Name</label>
+                        <input type="text" matInput 
+                        [value]="singleUser?.user?.last_name? singleUser?.user?.last_name:''"  readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>User Name</label>
+                        <input type="text" matInput [value]="singleUser?.user?.user_name? singleUser?.user?.user_name:''" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Email ID</label>
+                        <input type="text" matInput [value]="singleUser?.user?.email? singleUser?.user?.email:''" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Mobile Number</label>
+                        <input type="text" matInput [value]="singleUser?.user?.phone? singleUser?.user?.phone:''" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Country</label>
+                        <input type="text" matInput [value]="singleUser?.user?.country? singleUser?.user?.country:''" readonly>
+                    </div>
+                    
+
+                </div>
+                <div class="text-center">
+                   
+                    <!-- {{!this.addOfferForm.valid && this.croppedImageBase64==''}} <br>
+                        {{!this.addOfferForm.valid}} <br>
+                        {{this.croppedImageBase64==''}} -->
+                </div>
+            </form>
+
+           
+          
+        </mat-card>
+        <div style="padding: 40px 0px;">
+            <mat-card>
+                <div class="first-row">
+                    <span class="table-subtitle">
+                        Order History
+                    </span>
+                    <!-- <div>
+                        <div style="display:inline-block">
+                            <div class="search-box">
+                                <input #search placeholder="Search">
+                                <span class="search-clear" >
+                                    <mat-icon>close</mat-icon>
+                                </span>
+                                <span class="search-icon">
+                                    <mat-icon>search</mat-icon>
+                                </span>
+                            </div>
+                            <div class="status-drp">
+                                <mat-select placeholder="this week" >
+                                    <mat-option [value]="item.id" *ngFor="let item of enum.GENDER">
+                                        {{item.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <mat-divider inset="true"></mat-divider>
+                <div style="padding-top:30px ;"></div>
+                <div class="project-table">
+                    <table mat-table [dataSource]="dataSource | paginate: config" matSort class=" mat-elevation-z8">
+
+                        <ng-container matColumnDef="sr">
+                            <th mat-header-cell *matHeaderCellDef> S No.</th>
+                            <td mat-cell *matCellDef="let element; let i = index" routerLink="/orders/detail"
+                                [queryParams]="{'id':element.orderId}">
+                                {{(i+1)+((config.currentPage-1)*10)}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="shopProfile">
+                            <th mat-header-cell *matHeaderCellDef> Shop Profile </th>
+                            <td mat-cell *matCellDef="let element" routerLink="/orders/detail"
+                                [queryParams]="{'id':element.orderId}">
+                                <img [src]="element.shopPhoto" alt="" class="table-img">
+                                {{element.shopName}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="dateTime">
+                            <th mat-header-cell *matHeaderCellDef> Date & Time </th>
+                            <td mat-cell *matCellDef="let element" routerLink="/orders/detail"
+                                [queryParams]="{'id':element.orderId}"> {{element.orderDate | date}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="price">
+                            <th mat-header-cell *matHeaderCellDef> Price </th>
+                            <td mat-cell *matCellDef="let element" routerLink="/orders/detail"
+                                [queryParams]="{'id':element.orderId}"> {{element?.currency_code +' '+element?.total}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="buyer">
+                            <th mat-header-cell *matHeaderCellDef> Buyer Profile </th>
+                            <td mat-cell *matCellDef="let element" routerLink="/orders/detail"
+                                [queryParams]="{'id':element.orderId}">
+                                <img [src]="element?.userPhoto? element?.userPhoto:'assets/icons/dist-profile-blank.png'" alt="" class="profile-img-table" [ngClass]="element.photo? '':'borderImg'">
+                                {{element?.userName}}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef> Status </th>
+                            <td mat-cell *matCellDef="let element">
+                                <button mat-raised-button
+                                    [style.background-color]="element?.deliveryStatus==0 ? 'red' : (element?.deliveryStatus==1 ? '#0007954D' :(element?.deliveryStatus==2? '#11CDEF':(element?.deliveryStatus==2? '#43425D':(element?.deliveryStatus==3?'#FFD780':(element?.deliveryStatus==4? '#7764E4':(element?.deliveryStatus==5?'#F53C56':(element?.deliveryStatus==6? '#00CF73':null)))))) )"
+                                    [style.color]="'white'" disabled>
+                                    <span *ngIf="element?.deliveryStatus==1">PLACED</span>
+                                    <span *ngIf="element?.deliveryStatus==2">SIGNED</span>
+                                    <span *ngIf="element?.deliveryStatus==3">PROCESSED</span>
+                                    <span *ngIf="element?.deliveryStatus==4">SHIPPED</span>
+                                    <span *ngIf="element?.deliveryStatus==5">OUTFORDELIVERY</span>
+                                    <span *ngIf="element?.deliveryStatus==6">DELIVERED</span>
+                                </button>
+
+                            </td>
+                        </ng-container>
+
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                    <div style="text-align:center">
+                        <h2 *ngIf="this.dataSource?.length ==0">No Records Found !</h2>
+                        <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel="">
+                        </pagination-controls>
+                    </div>
+               
+              
+            </mat-card>
+        </div>
+    </div>
+</div>

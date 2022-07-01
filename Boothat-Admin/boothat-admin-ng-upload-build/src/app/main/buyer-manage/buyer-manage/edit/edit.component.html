@@ -1,0 +1,137 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+    <div style="padding: 40px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this.commonService.goBack()">
+                        arrow_back
+                    </span>
+                    <span class="page-title">
+                        Buyer Management
+                    </span>
+                </div>
+               
+                <div>
+                    <div>
+                        <button mat-flat-button class="decline-btn"
+                         (click)="softDelete()"
+                         >Delete</button>
+                    </div>
+                    <!-- <button type="submit" mat-flat-button class="save-btn accept">Edit</button> -->
+                    <!-- <div style="display:inline-block">
+                        <div class="status-drp">
+                            <mat-select placeholder="this week" >
+                                <mat-option [value]="item.id" *ngFor="let item of selectData">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field">
+
+
+                </div>
+                <div class="form-field">
+                    <div class="profile-file">
+                        <img [src]="this.detailsService.singleUser?.user?.photo? this.detailsService.singleUser?.user?.photo:'assets/icons/dist-profile-blank.png'"
+                        [ngClass]="this.detailsService.singleUser?.user?.photo? '':'borderImg'"
+                            alt="">
+                    </div>
+                </div>
+                <div class="form-field">
+
+
+                </div>
+                <div class="form-field">
+                    <label> First Name</label>
+                    <input type="text" matInput 
+                           [value]="this.detailsService.singleUser?.user?.first_name? this.detailsService.singleUser?.user?.first_name:''"
+                           readonly>
+                </div>
+                <div class="form-field">
+                    <label>Last Name</label>
+                    <input type="text" matInput 
+                        [value]="this.detailsService.singleUser?.user?.last_name? this.detailsService.singleUser?.user?.last_name:''"
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>User Name</label>
+                    <input type="text" matInput 
+                            [value]="this.detailsService.singleUser?.user?.user_name? this.detailsService.singleUser?.user?.user_name:''"
+                            readonly>
+                </div>
+                <div class="form-field">
+                    <label>Email ID</label>
+                    <input type="text" matInput 
+                        [value]="this.detailsService.singleUser?.user?.email? this.detailsService.singleUser?.user?.email:''"
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Mobile Number</label>
+                    <input type="text" matInput 
+                            [value]="this.detailsService.singleUser?.user?.phone? this.detailsService.singleUser?.user?.phone:''"
+                            readonly>
+                </div>
+                <div class="form-field">
+                    <label>Country</label>
+                    <input type="text" matInput 
+                            [value]="this.detailsService.singleUser?.user?.country? this.detailsService.singleUser?.user?.country:''"
+                            readonly>
+                </div>
+            </div>
+            <div class="first-row">
+
+                <div class="reset-pass-heading">
+                    Password Reset
+                </div>
+
+                <div style="margin-right: 15px;">
+                    <button class="save-btn accept " mat-flat-button (click)="isPassFormVisibile = true"
+                    [style.display]="isPassFormVisibile? 'none':''">Edit
+                        </button>
+                </div>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="isPassFormVisibile">
+                <div class="d-flex form justify-content-around flex-wrap">
+                    <div class="form-field">
+                        <label>Password</label>
+                        <input type="password" matInput formControlName="password" class="secondary_input"
+                        (input)="validatePassword()">
+                        <mat-error *ngIf="form.get('password').touched
+                        && form.get('password').hasError('required')">
+                            Required*
+                        </mat-error>
+                    </div>
+                    <div class="form-field">
+                        <label>Confirm Password</label>
+                        <input type="password" matInput formControlName="confirm_password" class="secondary_input" (input)="validatePassword()">
+                        <mat-error *ngIf="form.get('confirm_password')?.touched
+                        && form.get('confirm_password')?.hasError('required')">
+                            Required*
+                        </mat-error>
+                        <p *ngIf="!pasStatus" class="err">
+                            New Password And Confirm Password Must Be Same
+                        </p>
+                    </div>
+                    <div class="form-field">
+
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="save-btn" mat-flat-button 
+                        type="submit">Save</button>
+                    <!-- {{!this.addOfferForm.valid && this.croppedImageBase64==''}} <br>
+                        {{!this.addOfferForm.valid}} <br>
+                        {{this.croppedImageBase64==''}} -->
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

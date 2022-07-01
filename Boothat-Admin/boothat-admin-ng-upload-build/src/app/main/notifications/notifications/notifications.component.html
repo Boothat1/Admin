@@ -1,0 +1,208 @@
+<div  class="widget notifacations-wrapper" fxLayout="row" fxFlex="100" fxLayoutGap="20px" fxLayout.sm="column-reverse" fxLayout.md="column-reverse" fxLayout.xs="column-reverse">
+    <div fxLayout="column" fxFlex="60" fxFlex.sm="30" fxFlex.xs="30" fxFlex.md="30" >
+        <div id="products " class="page-layout carded fullwidth inner-scroll">
+
+            <!-- CENTER -->
+            <div>
+                <!-- HEADER -->
+                <div class="header" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="space-between center">
+
+                </div>
+                <mat-card >
+                    <div class="first-row">
+                        <span class="page-title">
+                            Notifications
+                        </span>
+                        <div>
+                            <div class="search-box" [ngClass]="{'search-box-with-data':search.value!=''}">
+                                <input #search placeholder="Search" [(ngModel)]="searchText">
+                                <span class="search-clear" (click)="clearSearch()">
+                                    <mat-icon>close</mat-icon>
+                                </span>
+                                <span class="search-icon" (click)="filterData(search)">
+                                    <mat-icon>search</mat-icon>
+                                </span>
+                            </div>
+                            <!-- <button mat-flat-button routerLink="add" class="cust-btn">
+                             + Add
+                             </button> -->
+                            <div style="display:inline-block">
+                                <div class="status-drp">
+                                    <mat-select placeholder="All" (selectionChange)="TimePeriodFilter($event)">
+                                        <mat-option [value]="item.key" *ngFor="let item of enum.TIME_FILTER | keyvalue">
+                                            {{item.value}}
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ADD BUTTON -->
+
+                    </div>
+                    <!-- <mat-divider></mat-divider> -->
+                    <div style="margin-top: 10px;"></div>
+                    <div class="notice-header d-flex">
+                        <div class="msg">
+                            message
+                        </div>
+                        <div class="date">date</div>
+                    </div>
+                    <!-- <div style="margin-bottom:20px;">
+                        <div class="d-flex ">
+                            <div class="warning">
+                                Warning
+                            </div>
+                            <div class="time">
+                                Mar 19, 2021 05:00 PM
+                            </div>
+                        </div>
+                        <div class="desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                    </div> -->
+                    <div style="margin-bottom:20px;" *ngFor="let item of this.notificationsData | paginate:config">
+                        <div class="d-flex ">
+                            <div class="warning">
+                                {{item.title}}
+                            </div>
+                            <div class="time">
+                                {{item.createdDate |date:'short'}}
+                            </div>
+                        </div>
+                        <div class="desc">
+                            {{item?.message}}
+                        </div>
+                    </div>
+                    <div style="text-align:center">
+                        <h2 *ngIf="this.notificationsData.length==0">No Records Found</h2>
+                        <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel="">
+                        </pagination-controls>
+                    </div>
+                    <!-- <div style="margin-bottom:20px;">  
+                        <div class="d-flex ">
+                            <div class="warning">
+                                Warning
+                            </div>
+                            <div class="time">
+                                Mar 19, 2021 05:00 PM
+                            </div>
+                        </div>
+                        <div class="desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                    </div> -->
+                </mat-card>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div fxLayout="column" fxFlex="40" fxFlex.sm="72" fxFlex.xs="72" fxFlex.md="72" style="padding-left: 8px;">
+        <div id="products" class="page-layout carded fullwidth inner-scroll">
+            <div >
+                <div class="header" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+                    fxLayoutAlign.gt-sm="space-between center">
+                    
+                </div>
+                <div >
+                    <mat-card>
+                        <div class="first-row">
+                            <span class="page-title" style="padding-bottom:24px; margin-top: 10px;">
+                                Create Notifications
+                            </span>
+                        </div>
+                        <div class="manage-dailog">
+                            <form action="" class="form" [formGroup]="form" (ngSubmit)="submit()">
+                               <div class="radios-notifications">
+                                <mat-radio-group aria-label="Select an option"
+                                [(value)]="this.notifyTo"
+                                (change)="getNotifyType($event)"
+                                [disabled]="this.toSendNotification.length>0">
+                                <mat-radio-button value="1" style="margin-right: 30px;">Buyer</mat-radio-button>
+                                <mat-radio-button value="2" > Seller</mat-radio-button>
+                            </mat-radio-group>
+                                
+                                   
+                               </div>  
+                               <div class="form-field position-relative">                     
+                                     <input [placeholder]="this.notifyTo==1? 'Add Buyers':'Add Sellers'" type="text" matInput formControlName="title" class="secondary_input" readonly>
+                                     <button  mat-icon-button 
+                                     type="button"
+                                        class="select-seller-icon"
+                                        (click)="selectSeller()"
+                                        >
+                                        <mat-icon >add_circle</mat-icon>
+                                     </button>                        
+                               </div>  
+                               <div class="form-field chips-wrapper">
+                                <mat-chip-list #chipList aria-label="select people to send Notifications">
+                                    <mat-chip *ngFor="let i of this.toSendNotification" 
+                                        (removed)="remove(i)"
+                                        class="example-button-container">
+                                      {{i.user_name}}
+                                      <button matChipRemove style="border: none;">
+                                        <mat-icon>close</mat-icon>
+                                      </button>
+                                    </mat-chip>
+                                    <input readonly
+                                            matInput>
+                                  </mat-chip-list>
+                               </div>                 
+                                <div class="form-field">
+                                    <label>Title</label>
+                                    <input type="text" matInput formControlName="title" class="secondary_input">
+                                </div>
+                                <!-- <div class="form-field">
+                                    <label>City</label>
+                                    <input type="text" matInput formControlName="city">
+                                </div> -->
+                                <div class="form-field">
+                                    <label>Description</label>
+                                    <textarea type="text" matInput rows="8" formControlName="message" class="secondary_input">
+                                </textarea>
+                                </div>
+                                <!-- <div>
+                                    <ngx-file-drop style="width: 100%;" *ngIf="croppedImageBase64==''"
+                                        dropZoneClassName="small-drop-zone" contentClassName="fileDrop"
+                                        dropZoneLabel="Drop files here" (onFileDrop)="dropped($event,'banner')"
+                                        multiple="false" accept="png">
+                                        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                                            <div class="cursor-pointer" (click)="openFileSelector()">
+                                                <img style="height: 60px;vertical-align: middle;"
+                                                    src="assets/icons/image-drop-icon.svg"><br>
+                                                    Drag & Drop
+                                                <span style="vertical-align: middle;" class="label-upload-image">your files or browse</span>
+                                            </div>
+                                        </ng-template>
+                                    </ngx-file-drop>
+                                    <div *ngIf="croppedImageBase64!=''" class="prev-drp-img"
+                                        style="display: block;height: 100px;text-align: center;">
+                                        <img style="width:auto;height:100px;border-radius:6px;"
+                                            [src]="croppedImageBase64">
+                                    </div>
+                                    <span (click)="onRemoveImage()" *ngIf="croppedImageBase64!=''" class="del-icon"
+                                        style="text-align:center;display: block;">
+                                        <img src="assets/icons/delete_icon.svg">
+                                        <span>Delete</span>
+                                    </span>
+                                </div> -->
+                                <div class="btn-group">
+                                    <button mat-raised-button type="submit" 
+                                    class="restrict-btn"
+                                    [disabled]="!this.form.valid || this.toSendNotification.length==0">Send</button>
+                                </div>
+                            </form>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

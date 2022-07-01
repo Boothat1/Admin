@@ -1,0 +1,52 @@
+.wrapper{
+    width: 96%;
+    // padding:45px 0;
+}
+.mat-form-field{
+    width: 100%;
+    
+}
+.mat-form-field-flex{
+    background: #EFEFEF !important;
+}
+.remove-btn,.restrict-btn{
+    width: 104px;
+}
+.ql-toolbar.ql-snow + .ql-container.ql-snow{
+    background: #EFEFEF !important;
+    border: none!important;
+    color: #000;
+    max-height: 500px!important;
+    font-family: 'ManropeRegular';
+}
+.ql-toolbar.ql-snow{
+    background: #F7F7F7;
+    margin-top: 15px;
+    // border: none!important;
+}
+.ql-container{
+    min-height: 600px;
+    color: #F7F7F7;
+    border: none;
+}
+.userPages .btn-group{
+    margin-top: 30px;
+}
+// .save-btn{
+//     font-size:20px;
+//     padding-top:5px;
+//     padding-bottom: 6px;
+// }
+
+.width50AllMedia{
+    width: 50%;
+}
+
+.flag-image{
+    width: 30px; 
+    height: 30px; 
+    object-fit: cover; 
+    text-align: end;  
+    display: block;
+    margin-left: auto;
+}

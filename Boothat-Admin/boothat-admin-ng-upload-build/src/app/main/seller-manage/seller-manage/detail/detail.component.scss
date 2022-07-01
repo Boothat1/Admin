@@ -1,0 +1,40 @@
+.form-field{
+    width: 30%;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.cdk-column-images.mat-column-images{
+    max-width: 20px;
+    padding: 10px 0;
+}
+.content-cards:nth-child(3){
+   margin:0 28px 0 40px;
+}
+
+
+.content-cards .linear-card{
+    background-size: cover!important;
+}
+.content-cards .first-card{
+    background: url(assets/images/tile_2.png) no-repeat right;
+}
+.content-cards .second-card{
+    background: url(assets/images/tile_6.png) no-repeat right;
+}
+.content-cards .third-card{
+    background: url(assets/images/tile_8.png) no-repeat right;
+}
+.content-cards .forth-card{
+    background: url(assets/images/tile_5.png) no-repeat right;
+}
+.content-cards .fifth-card{
+    background: url(assets/images/tile_7.png) no-repeat right;
+}
+.content-cards .sixth-card{
+    background: url(assets/images/tile_9.png) no-repeat right;
+}
+
+.middleware{
+    margin-top: 30px;
+}

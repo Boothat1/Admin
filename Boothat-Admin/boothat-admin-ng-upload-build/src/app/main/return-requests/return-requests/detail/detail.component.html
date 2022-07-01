@@ -1,0 +1,217 @@
+
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+    <div style="padding: 40px 20px;">
+        <mat-card style="padding-bottom:40px;">
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this.commonService.goBack()">
+                        arrow_back
+                    </span>
+                    <span class="page-title">
+                        Product Return Detail
+                    </span>
+                </div>
+                <div>
+                   
+                </div>
+            </div>
+            
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <!-- <div style="padding-top:20px ;"></div> -->
+            <div class="first-row">
+                <div class="reset-pass-heading">
+                   Buyer Info
+                </div>
+
+                
+            </div>
+            <form [formGroup]="">
+                <div class="d-flex form justify-content-around flex-wrap">
+                    <div class="form-field">
+
+
+                    </div>
+                    <div class="form-field">
+                        <div class="profile-file">
+                            <img [src]="'assets/icons/dist-profile-blank.png'"
+                                height="200" [ngClass]="'borderImg'">
+                        </div>
+                    </div>
+                    <div class="form-field">
+
+
+                    </div>
+                    <div class="form-field">
+                        <label>First Name</label>
+                        <input type="text" matInput formControlName="first_name"
+                            [value]=""
+                            readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Last Name</label>
+                        <input type="text" matInput formControlName="last_name"
+                            [value]=""
+                            readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Username</label>
+                        <input type="text" matInput formControlName="username"
+                            [value]=""
+                            readonly>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Email ID</label>
+                        <input type="text" matInput formControlName="email"
+                            [value]="" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Mobile Number</label>
+                        <input type="text" matInput formControlName="mobile"
+                            [value]="" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Country</label>
+                        <input type="text" matInput formControlName="country"
+                            [value]=""
+                            readonly>
+                    </div>
+                   
+
+
+                </div>
+
+
+
+            </form>
+        </mat-card>
+        <mat-card style="margin-top:20px">
+            <div class="first-row">
+                <div class="reset-pass-heading">
+                   Seller Info
+                </div>
+
+                
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field"></div>
+                <div class="form-field">
+                    <div class="profile-file">
+                        <img [src]="'assets/icons/dist-profile-blank.png'"
+                            height="200" [ngClass]="">
+                    </div>
+                </div>
+                <div class="form-field"></div>
+                <div class="form-field">
+                    <label>First Name</label>
+                    <input type="text" matInput formControlName="first_name"
+                        [value]=""
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Last Name</label>
+                    <input type="text" matInput formControlName="last_name"
+                        [value]=""
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Username</label>
+                    <input type="text" matInput formControlName="username"
+                        [value]=""
+                        readonly>
+                </div>
+
+                <div class="form-field">
+                    <label>Email ID</label>
+                    <input type="text" matInput formControlName="email"
+                        [value]="" readonly>
+                </div>
+                <div class="form-field">
+                    <label>Mobile Number</label>
+                    <input type="text" matInput formControlName="mobile"
+                        [value]="" readonly>
+                </div>
+                <div class="form-field">
+                    <label>Country</label>
+                    <input type="text" matInput formControlName="country"
+                        [value]=""
+                        readonly>
+                </div>
+              
+            </div>
+          
+            
+        </mat-card>
+        <mat-card style="margin-top:20px">
+            <div class="first-row">
+                <div class="reset-pass-heading">
+                  Product Details
+                </div>
+
+                
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field position-relative">
+                    <label> Title </label>
+                    
+                    <input type="text" matInput 
+                        [value]=""
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Sub Heading</label>
+                    <input type="text" matInput 
+                        [value]=""
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Sizes</label>
+                    <input type="text" matInput 
+                        [value]=""
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>MRP</label>
+                    <input type="text" matInput
+                        [value]="" readonly>
+                </div>
+                <div class="form-field">
+                    <label>Discount</label>
+                    <input type="text" matInput
+                        [value]=""
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Price</label>
+                    <input type="text" matInput
+                        [value]=""
+                        readonly>
+                </div>
+              
+            </div>
+            <div class="first-row">
+                <div class="reset-pass-heading">
+                Return Request
+                </div>
+
+                
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field">
+                    <label>Reason</label>
+                    <input type="text" matInput
+                        [value]="" readonly>
+                </div>
+                <div class="form-field"></div>
+                <div class="form-field"></div>
+                <div class="form-field width100 ">
+                    <label>Description</label>
+                    <textarea type="text" matInput
+                    [value]="''"
+                    readonly></textarea>
+                </div>
+            </div>       
+        </mat-card>
+    </div>
+</div>

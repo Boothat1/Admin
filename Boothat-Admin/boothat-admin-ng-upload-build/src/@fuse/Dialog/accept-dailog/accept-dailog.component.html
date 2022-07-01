@@ -1,0 +1,17 @@
+<mat-dialog-content>
+    <div class="w-full" >
+        <h3 style="margin-top: 0px;"> {{message}} </h3>
+    </div>
+</mat-dialog-content>
+<div class="form" *ngIf="this.isReasonRequired">
+    <div class="form-field">
+        <label>Reason</label>
+        <textarea type="text" matInput [(ngModel)]="reasonOfCancel"></textarea>
+        <mat-error *ngIf="errMsg">The Reason is Mandatory</mat-error>
+        <mat-error *ngIf="this.amountTrue !=undefined ">Note: Purchased amount will be transfer in seller wallet balance. </mat-error>
+    </div>
+</div>
+<mat-dialog-actions align="end">
+    <button class="cust-blue-btn restrict-btn" mat-flat-button  tabindex="-1" (click)="onConfirmClick()">{{confirmButtonText}}</button>
+    <button mat-flat-button class="bg-gray text-contrast-black" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+</mat-dialog-actions>

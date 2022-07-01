@@ -1,0 +1,86 @@
+
+<div id="products" class="page-layout carded fullwidth inner-scroll setting-wrapper">
+    <!-- CENTER -->
+    <!-- <div class="center"> -->
+
+
+
+    <!-- <div class="status-drop-with-icons-both-side">
+        <mat-form-field appearance="fill">
+            <mat-label>Favorite Food</mat-label>
+            <mat-select>
+              <mat-option></mat-option>
+              <mat-option [value]="option.value" *ngFor="let option of foods">{{ option.viewValue }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div> -->
+    
+
+
+    <div class="after-login-pages">
+        <!-- CONTENT CARD -->
+        <div class="widget" fxLayout="row" fxFlex="100" fxLayoutGap="20px">
+            <div fxLayout="column" fxFlex="100" style="padding-left: 8px; ;">
+                <div>
+                    <mat-card>
+                        <div>
+                            <span class="page-title">
+                                Settings
+                            </span>
+                            <div style="margin-bottom: 10px;"></div>
+                            <mat-divider inset="true"></mat-divider>
+                            <div style="margin-top: 20px;"></div>
+                            <div class="change-password">
+                                Change Password
+                            </div>
+                            <div class="manage-dailog">
+                                <form class="form" [formGroup]="changePassForm" (ngSubmit)="changePassword()">
+                                    <div class="form-field">
+                                        <label>Old Password</label>
+                                        <input type="password" matInput formControlName="oldPassword"
+                                            class="secondary_input">
+                                        <p *ngIf="changePassForm?.get('oldPassword').touched && changePassForm.get('oldPassword').hasError('required')"
+                                            class="err">Required</p>
+                                    </div>
+                                    <div class="form-field">
+                                        <label>New Password</label>
+                                        <input type="password" matInput formControlName="newPassword"
+                                            (input)="validatePassword()" class="secondary_input">
+                                        <p *ngIf="changePassForm?.get('newPassword').touched && changePassForm.get('newPassword').hasError('required')"
+                                            class="err">Required</p>
+                                    </div>
+                                    <div class="form-field">
+                                        <label>Confirm Password</label>
+                                        <input type="password" matInput formControlName="confirmPassword"
+                                            (input)="validatePassword()" class="secondary_input">
+                                        <p *ngIf="changePassForm?.get('confirmPassword').touched && changePassForm.get('confirmPassword').hasError('required')"
+                                            class="err">Required</p>
+                                        <p *ngIf="!pasStatus" class="err">New Password And Confirm Password Must
+                                            Be Same</p>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button class="save-btn" mat-flat-button
+                                            [disabled]="!this.changePassForm.valid">
+                                            Submit
+                                        </button>
+                                        <!-- <p>Form Status: {{ changePassForm.status +changePassForm.valid}}</p> -->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </mat-card>
+
+               
+                  
+
+                </div>
+            </div>
+
+            <!-- / CONTENT CARD -->
+        </div>
+    </div>
+
+    <!-- / CENTER -->
+    <!-- </div> -->
+
+

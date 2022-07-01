@@ -1,0 +1,241 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll seller-detail">
+    <div class="first-row one">
+        <div>
+            <span class="material-icons goBackBtn" (click)="this.commonService.goBack()">
+                arrow_back
+            </span>
+            <span class="table-title">
+                Seller Details
+            </span>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div fxLayout="column" class="content-cards" fxLayoutAlign="start" fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="start start">
+        <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+            <div class="p-16 pb-0 first-card linear-card" fxLayout="wrap-reverse" fxLayoutAlign="start end">
+
+                <div class="linear-card-heading">
+                    <div class="h3">
+                        <span class="card-title align-top">NUMBER OF PROUCTS</span>
+                    </div>
+                    <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                        {{this.detailService.singleMerchant?.productCount}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+            <div class="p-16 pb-0 second-card linear-card" fxLayout="wrap-reverse" fxLayoutAlign="start end">
+
+                <div class="linear-card-heading">
+                    <div class="h3">
+                        <span class="card-title align-top">NUMBER OF ORDERS </span>
+                    </div>
+                    <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                        {{this.detailService.singleMerchant?.numberOfOrders}}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+            <div class="p-16 pb-0 third-card linear-card" fxLayout="wrap-reverse" fxLayoutAlign="start end">
+
+                <div class="linear-card-heading">
+                    <div class="h3">
+                        <span class="card-title">PRODUCTS VIEWS</span>
+                    </div>
+                    <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                        {{this.detailService.singleMerchant?.viewsCount}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="column" class="content-cards" fxLayoutAlign="start" fxLayout.gt-sm="row"
+        fxLayoutAlign.gt-sm="start start">
+
+        <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+            <div class="p-16 pb-0 forth-card linear-card" fxLayout="wrap-reverse" fxLayoutAlign="start end">
+
+                <div class="linear-card-heading">
+                    <div class="h3">
+                        <span class="card-title">REFUND REQUESTS</span>
+                    </div>
+                    <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                        {{this.detailService.singleMerchant?.refundRequest}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+            <div class="p-16 pb-0 fifth-card linear-card" fxLayout="wrap-reverse" fxLayoutAlign="start end">
+
+                <div class="linear-card-heading">
+                    <div class="h3">
+                        <span class="card-title">TOTAL COMPLAINTS</span>
+                    </div>
+                    <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                        {{this.detailService.singleMerchant?.totalComplaints}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="auto-width mb-32 mt-20" fxFlex="50" fxFlex.gt-sm="100" [ngClass.gt-sm]="'mb-0 mr-24'">
+
+            <div class="p-16 pb-0 sixth-card linear-card" fxLayout="wrap-reverse" fxLayoutAlign="start end">
+
+                <div class=" linear-card-heading">
+                    <div class="h3"> 
+                        <span class="card-title">DAILY SALES</span>
+                    </div>
+                    <div class="font-size-54 font-weight-300 line-height-1 mt-8 card-content">
+                        {{this.detailService.singleMerchant?.dailySales}}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+    <!-- <div class="center">
+
+    </div> -->
+    <div class="after-login-pages">
+        <mat-card>
+            <div class="first-row">
+                <div>
+                    <span class="table-title">
+                        Seller
+                    </span>
+                </div>
+                <div>
+                    <button type="submit" mat-flat-button class="save-btn accept"
+                        routerLink="/seller-manage/detail-overview" [queryParams]="{'id':this.paramsId}">View</button>
+                    <!-- <button type="submit" mat-flat-button class="save-btn accept" routerLink="/user-manage/edit">Edit</button> -->
+                    <!-- <div style="display:inline-block">
+                        <div class="status-drp">
+                            <mat-select placeholder="this week" >
+                                <mat-option [value]="item.id" *ngFor="let item of selectData">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <form action="" [formGroup]="userDetail">
+                <div class="d-flex form justify-content-around flex-wrap">
+                    <div class="form-field">
+                        <label> First Name</label>
+
+                        <input type="text" matInput readonly formControlName="first_name"
+                            [value]="this.detailService.singleMerchant?.user.first_name? this.detailService.singleMerchant?.user.first_name:''">
+                    </div>
+                    <div class="form-field">
+                        <label>Last Name</label>
+                        <input type="text" matInput formControlName="last_name" readonly
+                            [value]="this.detailService.singleMerchant?.user.last_name? this.detailService.singleMerchant?.user.last_name:''">
+                    </div>
+                    <div class="form-field">
+                        <label>User Name</label>
+                        <input type="text" matInput formControlName="user_name" readonly
+                            [value]="this.detailService.singleMerchant?.user.user_name? this.detailService.singleMerchant?.user.user_name:''">
+                    </div>
+                    <div class="form-field">
+                        <label>Email ID</label>
+                        <input type="text" matInput formControlName="email" readonly
+                            [value]="this.detailService.singleMerchant?.user.email? this.detailService.singleMerchant?.user.email:''">
+                    </div>
+                    <div class="form-field">
+                        <label>Mobile Number</label>
+                        <input type="text" matInput formControlName="mobile" readonly
+                            [value]="this.detailService.singleMerchant?.user.phone? this.detailService.singleMerchant?.user.phone:''">
+                    </div>
+                    <div class="form-field">
+                        <label>Country</label>
+                        <input type="text" matInput formControlName="country" readonly
+                            [value]="this.detailService.singleMerchant?.user.country? this.detailService.singleMerchant?.user.country:''">
+                    </div>
+                </div>
+              
+            </form>
+        </mat-card>
+
+
+       
+
+        <div class="middleware"></div>
+       
+    </div>
+    <div class="after-login-pages">
+
+      
+
+        <mat-card>
+
+            <div class="first-row">
+                <div class="table-title">
+                    Products & Orders
+                </div>
+                <!-- <div class="d-flex">
+                    <div class="search-box" [ngClass]="{'search-box-with-data':search.value!=''}">
+                        <input #search placeholder="Search" [(ngModel)]="searchText">
+                        <span class="search-clear" (click)="clearSearch()">
+                            <mat-icon>close</mat-icon>
+                        </span>
+                        <span class="search-icon" (click)="filterData(search)">
+                            <mat-icon>search</mat-icon>
+                        </span>
+                    </div>
+                    <div class="custom-drop">
+                        <div class="status-drp ">
+                            <mat-icon>date_range</mat-icon>
+    
+                            <mat-select placeholder="All" (selectionChange)="TimePeriodFilter($event)">
+    
+                                <mat-option [value]="item.key" *ngFor="let item of Enums.TIME_FILTER | keyvalue">
+                                    {{item.value}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <mat-divider [inset]="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+
+            <mat-tab-group>
+                <mat-tab label="Products"> 
+                    
+
+                    <app-seller-products></app-seller-products>
+
+
+
+                </mat-tab>
+                <mat-tab label="Recieved Orders">
+                    <app-seller-orders></app-seller-orders>
+                </mat-tab>
+              </mat-tab-group>   
+        </mat-card>
+    </div>
+</div>

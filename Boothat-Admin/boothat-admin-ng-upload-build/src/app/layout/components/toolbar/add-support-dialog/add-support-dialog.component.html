@@ -1,0 +1,26 @@
+<div mat-dialog-content>
+    <h2>Add WhatsApp Number For Support</h2>
+    <form [formGroup]="changeSupportForm">
+        <mat-form-field appearance="outline">
+            <mat-label style="color:#436129">Provide Number </mat-label>
+            <input type="text" formControlName='whatsAppNumber' matInput maxlength="13" minlength="10" required [pattern]="pattern.number" placeholder="+911234567890">
+            <mat-error 
+            *ngIf="this.changeSupportForm.get('whatsAppNumber').touched && 
+                   this.changeSupportForm.get('whatsAppNumber').hasError('required')            
+                "> Mobile Number is required </mat-error>
+
+
+            <mat-error *ngIf="
+            this.changeSupportForm.get('whatsAppNumber').dirty &&
+            this.changeSupportForm.get('whatsAppNumber').hasError('minlength') || 
+            this.changeSupportForm.get('whatsAppNumber').dirty &&
+            this.changeSupportForm.get('whatsAppNumber').hasError('pattern')"> Enter a valid mobile number</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions class="m-0 p-16 " fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+    <button mat-stroked-button  [mat-dialog-close]="[false]">Cancel</button>
+    <button mat-flat-button class="primary" [mat-dialog-close]="[true,changeSupportForm.value]"
+        [disabled]="!changeSupportForm.valid">Submit</button>
+
+</div>

@@ -1,0 +1,176 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- CENTER -->
+    <div style="padding: 30px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this.commonService.goBack()">
+                        arrow_back
+                    </span>
+                    <span class="table-title">
+
+                        Product Details
+                    </span>
+                </div>
+            </div>
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <div class="first-row">
+                <div class="table-subtitle">
+                    Seller Details
+                </div>
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field position-relative">
+                    <label>Seller Name</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.merchant_name">
+                    <mat-icon matPrefix class="my-icon" routerLink="/seller-manage/detail"
+                    [queryParams]="{'id':this.detailService.singleProduct?.merchant?.id}"><span class="material-icons">
+                            visibility
+                        </span>
+                    </mat-icon>
+                   
+                </div>
+                <div class="form-field">
+                    <label>Email Id</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.merchant?.email? this.detailService.singleProduct?.merchant?.email:''">
+                </div>
+                <div class="form-field">
+                    <label>Mobile Number</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.merchant?.phone? this.detailService.singleProduct?.merchant?.phone:''">
+                </div>
+            </div>
+            <div class="first-row">
+                <div class="table-subtitle">
+                    Product Details
+                </div>
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                
+                <div class="form-field">
+                    <label>Title</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService?.singleProduct?.product_name? this.detailService?.singleProduct?.product_name:''">
+                </div>
+                <!-- <div class="form-field">
+                    <label>Sub Heading</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService?.singleProduct?.subHeading? this.detailService.singleProduct?.subHeading:''">
+                </div> -->
+               
+                <div class="form-field">
+                    <label>Condition</label>
+                    <input type="text" matInput disabled [value]="this.detailService.singleProduct?.conditions? (this.detailService.singleProduct?.conditions==1? 'New':'Used'):''">
+                </div>
+                <div class="form-field">
+                    <label>Brand</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.brand? this.detailService.singleProduct?.brand:''">
+                </div>
+                <div class="form-field textarea ">
+                    <label>Description</label>
+                    <textarea disabled
+                    rows="7"
+                    style=" resize: vertical;" 
+                    [value]="this.detailService.singleProduct?.description? this.detailService.singleProduct?.description:''"></textarea>
+                </div>
+                <div class="form-field">
+                    <label>Date Posted</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.createdDate | date ">
+                </div>
+                <div class="form-field">
+                    <label>Views</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.totalViews? this.detailService.singleProduct?.totalViews:'0'">
+                </div>
+                <!-- <div class="form-field">
+                    <label>MRP</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productManageService.singleProduct?.mrp?this.productManageService.singleProduct?.mrp:''">
+                </div> -->
+                <div class="form-field">
+                    <label>Currency</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.currency? this.detailService.singleProduct?.currency:''">
+                </div>
+                <div class="form-field">
+                    <label>Price</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.price? this.detailService.singleProduct?.price:'0'">
+                </div>
+                <div class="form-field">
+                    <label>Discount in (%)</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.discount?this.detailService.singleProduct?.discount:'0'">
+                </div>
+                <div class="form-field">
+                    <label>Final Price</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.final_price? this.detailService.singleProduct?.final_price:'0'">
+                </div>
+               
+               
+
+                <div class="form-field">
+                    <label>Purchases</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.totalPurchases? this.detailService.singleProduct?.totalPurchases:'0'">
+                </div>
+
+                <div class="form-field">
+                    <label>Pending Orders</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.pendingOrders? this.detailService.singleProduct?.pendingOrders:'0'">
+                </div>
+                <div class="form-field">
+                    <label>
+                        Quantity
+                    </label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService.singleProduct?.in_stock? this.detailService.singleProduct?.in_stock:'0'">
+                </div>
+                
+              
+                <div class="form-field textarea width-50">
+                    <label>Color</label>
+                    <textarea type="text" matInput disabled
+                    [value]="this.detailService?.colors? this.detailService?.colors  :''
+                    "></textarea>
+                </div>
+                <div class="form-field textarea width-50">
+                    <label>Size</label>
+                    <textarea type="text" matInput disabled
+                    [value]="this.detailService?.sizes? this.detailService?.sizes  :''
+                    "></textarea>
+                </div>
+                
+             
+                <div class="form-field textarea" *ngIf="this.detailService.singleProduct?.rejectRemarks">
+                    <label>Rejection Reason</label>
+                    <textarea disabled 
+                    style=" resize: vertical;" 
+                    rows="7"
+                    [value]="this.detailService.singleProduct?.rejectRemarks? this.detailService?.singleProduct?.rejectRemarks:''" class="reject-reason"></textarea>
+                </div>
+                <div class="form-field image" *ngFor="let image of this.detailService.Productphotos;let i=index">
+                    <img [src]="image" alt="" *ngIf="i<4" class="product-img">
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <!-- <button 
+                [ngClass]="this.singleMerchant?.status? 'action-btn':'decline-btn'"
+                [innerHTML]="this.singleMerchant?.status==1?'Enable':'Disable'"
+                mat-flat-button class="action-btn"
+                (click)="confirmDailog(this.singleMerchant.status,this.singleMerchant.id)"></button> -->
+            </div>
+            
+        </mat-card>
+    </div>
+</div>

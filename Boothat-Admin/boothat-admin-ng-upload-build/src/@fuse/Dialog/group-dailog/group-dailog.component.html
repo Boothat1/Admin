@@ -1,0 +1,34 @@
+<div class="manage-dailog">
+    <div class="close-btn" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+    </div>
+    <div style="text-align: center;">
+        <img src="assets/images/tia/Oval.png" alt="">
+    </div>
+    <form action="" class="form">
+        <div class="form-field">
+            <label>Group Name</label>
+            <input type="text" matInput disabled placeholder="Hydrogen">
+        </div>
+        <div class="form-field p-relative">
+            <label>Total Users</label>
+            <input type="text" matInput disabled placeholder="1234567890">
+            <div class="open-users" (click)="openUsers()">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </div>
+        </div>
+        <div class="form-field">
+            <label>Admin of Group</label>
+            <input type="text" matInput disabled placeholder="anonymous">
+        </div>
+        <div class="form-field">
+            <label>Date of Creation</label>
+            <input type="text" matInput disabled placeholder="02/06/1997">
+        </div>
+        <div class="btn-group">
+            <button type="button" class="restrict-btn">Restrict</button>
+            <!-- <button type="button" class="remove-btn" (click)="confirmDailog();closeDialog()">Remove</button> -->
+        </div>
+    </form>
+
+</div>

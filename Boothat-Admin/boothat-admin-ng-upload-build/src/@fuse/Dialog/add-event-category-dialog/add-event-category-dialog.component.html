@@ -1,0 +1,62 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Event Category Details</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0 p-0" fusePerfectScrollbar>
+
+        <form class="form" [formGroup]="form">
+            <!-- <div fxLayout="row" fxLayoutGap="5px" class="form-title">
+                    <p>Personal Details</p>
+                </div> -->
+            <div fxLayout="row">
+                <div class="form-field mx-0" style="width:100%;">
+                    <label>Category Type<span class="err"> *</span></label>
+                    <input type="text" formControlName="title" matInput>
+                    <span class="err" style="display: block;" *ngIf="form?.get('title').hasError('required') && form?.get('title').touched">
+                        Please enter new Category
+                    </span>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div class="form-field mx-0" style="width: 100%;">
+                    <label>Category Description</label>
+                    <textarea formControlName="description" matInput></textarea>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div fxFlex fxLayout="column" fxLayoutGap="5px">
+                    <div class="position-relative mx-auto" style="display: inline-block;">
+                        <img *ngIf="previewUrl" [src]="previewUrl"
+                            style="height: auto;max-width: 200px;min-width: 100px;">
+                        <mat-icon *ngIf="form?.value.icon" class="position-absolute"
+                            style="cursor: pointer;top:5px;right:5px;text-shadow: 0px 1px 10px #0000007d;color: white;"
+                            (click)="removeImage()">
+                            cancel</mat-icon>
+                    </div>
+                    <!-- <mat-form-field appearance="outline" class="pr-8" fxFlex="100" style="font-size: 12px;"> -->
+
+                    <input type="file" #fileUpload (change)="readUrl($event)" style="display: none;">
+                    <button *ngIf="!previewUrl" mat-flat-button class="accent"
+                        (click)="fileUpload.click()">{{form?.value.icon?'Icon Selected':'Upload Icon'}}</button>
+
+                    <mat-error *ngIf="!isImageValid">Only JPEG, JPG, PNG, SVG & ICO file allowed</mat-error>
+
+                    <!-- </mat-form-field> -->
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16 pt-0" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+
+        <button mat-flat-button color="primary" [mat-dialog-close]="[false]">Cancel</button>
+        <button mat-flat-button class="cust-btn" (click)="onSubmit()" [disabled]="!form?.valid">Submit</button>
+    </div>
+</div>

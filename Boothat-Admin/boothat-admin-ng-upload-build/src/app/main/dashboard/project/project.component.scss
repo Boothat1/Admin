@@ -1,0 +1,464 @@
+#dashboard-project {
+  > .sidebar {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+  }
+
+  > .center {
+    .top-bg {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 200px;
+    }
+
+    > .header {
+      height: 160x;
+      min-height: 120px;
+      max-height: 200px;
+      // background: url('assets/images/backgrounds/dark-material-bg.jpg') no-repeat;
+      background-size: cover;
+      color: white;
+
+      .selected-project {
+        background: rgba(0, 0, 0, 0.12);
+        color: #ffffff;
+        padding: 8px 16px;
+        height: 40px;
+        line-height: 24px;
+        font-size: 16px;
+        border-radius: 8px 0 0 0;
+      }
+
+      .project-selector {
+        margin-left: 1px;
+        background: rgba(0, 0, 0, 0.12);
+        border-radius: 0 8px 0 0;
+
+        mat-icon {
+          color: #ffffff;
+        }
+      }
+    }
+
+    > .content {
+      flex: 1;
+      padding: 15px;
+      background: #F5F7F9 !important;
+      .welcome-text {
+        color: #1E1E1E;
+        font-size: 26px;
+        font-family: 'manrope';
+        font-weight: 700;
+        // padding-bottom: 21px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        margin-left: 7px;
+      }
+
+    .theme-heading{
+      color: #436129;
+      font-size: 24px;
+      font-family: 'ManropeRegular';
+    }
+
+      .content-cards {
+        z-index: 1;
+        position: relative;
+        left: 8px;
+        margin: 0px 0px 0 0px;
+        top: 0px;
+       
+        .card-title {
+          padding-bottom: 10px;
+          position: relative;
+          font-family: manropeBold;
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            width: 38px;
+            height: 3px;
+            background: white;
+          }
+        }
+        .card-content {
+          font-size: 34px;
+          padding: 11px 0px;
+          font-family: manropeBold;
+        }
+      }
+
+      .graph-title {
+        font-size: 15px;
+        font-weight: bold;
+        color: #1e212a;
+        margin: auto 0px;
+      }
+      .graph-dropdown {
+      }
+
+      // mat-tab-group {
+      //     height: 100%;
+
+      //     .mat-tab-body-wrapper {
+      //         flex-grow: 1;
+      //     }
+      // }
+
+      // .mat-tab-label-container {
+      //     padding: 0 24px;
+      // }
+    }
+  }
+
+  .widget {
+    &.widget5 {
+      .gridline-path.gridline-path-horizontal {
+        display: none;
+      }
+    }
+  }
+}
+.chart-row{
+  padding: 0 20px 0 8px;
+}
+.dashboard-table{
+  margin: 20px 15px 20px 10px;
+}
+.filter {
+  background: #f3f3f3;
+  padding: 10px;
+  border-radius: 5px;
+}
+.products-table .mat-sort-header-button {
+  color: var(--primary-color);
+}
+
+// ------------------------------------------------------------------------------------------------------------------------
+.linear-card{
+  min-height: 195px;
+  border-radius: 13px;
+}
+.first-card {
+  background: url('assets/images/cards/total_user_bg.png') no-repeat;
+  color: white;
+  box-shadow: 0px 5px 18px #4171DB29;
+  padding-bottom: 24px!important;
+  background-size: cover;
+ 
+}
+.second-card {
+  background: url('assets/images/cards/total_sellers_bg.png') no-repeat;
+  color: white;
+  box-shadow: 0px 5px 18px #4171DB29;
+  padding-bottom: 24px!important;
+  background-size: cover;
+}
+.third-card {
+  background: url('assets/images/cards/daily_sales_bg.png') no-repeat;
+  color: white;
+  box-shadow: 0px 5px 18px #4171DB29;
+  padding-bottom: 24px!important;
+  background-size: cover;
+}
+.forth-card {
+  background: transparent linear-gradient(289deg, #2BC5DD 0%, #5880E8 100%) 0% 0% no-repeat padding-box;
+  color: white;
+  box-shadow: 0px 5px 18px #4171DB29;
+  padding-bottom: 24px!important;
+}
+.fifth-card{
+  background: transparent linear-gradient(286deg, #FFC445 0%, #FF8558 100%) 0% 0% no-repeat padding-box;
+  color: white;
+  box-shadow: 0px 5px 18px #4171DB29;
+  padding-bottom: 24px!important;
+  background-size: cover;
+}
+.sixth-card{
+  background: transparent linear-gradient(286deg, #B173F3 0%, #5454B6 100%) 0% 0% no-repeat padding-box;
+  color: white;
+  box-shadow: 0px 5px 18px #4171DB29;
+  padding-bottom: 24px!important;
+  background-size: cover;
+}
+
+@media (max-width: 1440px){
+  .increasedBy{
+    margin-top:20px!important;
+  }
+  .linear-card-heading .h3{
+    height: 44px!important;
+  }
+  #dashboard-project .content-cards .card-content,
+  .linear-card .linear-card-heading .card-content{
+    padding: 0px!important;
+  }
+}
+.linear-card{
+  cursor: pointer;
+}
+.linear-card-heading .h3 .card-title{
+    font-size: 18px;
+  // width: 100%; 
+  // white-space:nowrap;
+}
+.plant-chart .title{
+  font-size: 24px;
+
+}
+.plant-chart .title:nth-child(1){
+  color: #EA4A49;
+}
+.plant-chart .title:last-child{
+  color: #6D9E42;
+}
+hr {
+  border: 1px solid #82828240;
+}
+.title {
+  color: #436129;
+  font-family: "ManropeRegular";
+  font-size: 18px;
+}
+.filters {
+  cursor: pointer;
+  margin-left: 35px;
+  font-size: 12px;
+}
+.filter-active {
+  font-family: "ManropeRegular";
+  color: #272d3b;
+}
+.distributor {
+  margin: 19px 0;
+  display:flex;
+}
+.profile-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+  object-fit: cover;
+}
+.top-sellers-wrapper button{
+  width: 100%;
+}
+.dist-name {
+  color: #52575d;
+  font-family: "manropeBold";
+  font-size: 16px;
+  margin-left: 16px;
+  text-align: left;
+}
+.neg-growth {
+  padding: 8px;
+  height: 30px;
+  width: 30px;
+  background: #cd0000;
+  color: #cd0000;
+
+  // opacity: 0.29;
+  border-radius: 50%;
+}
+.pos-growth {
+  padding: 8px;
+  height: 30px;
+  width: 30px;
+  background: #aaffbe33;
+  color: #0d472d;
+  // opacity: 0.06;
+  border-radius: 50%;
+}
+
+// .mat-column-profitStatus{
+//   width: 50px;
+// }
+.statistics-section{
+  display: flex;
+  margin: 10px 10px 45px 10px!important;
+  padding: 10px;
+  justify-content: space-around;
+}
+.statistics-section .stat-number{
+    font-size: 30px;
+    color: #333333;
+    font-weight: 600;
+    letter-spacing: 0.94px;
+    margin-left: 10px;
+}
+.statistics-section .stat-type{
+  color: #B3B8BD;
+  font-size: 14px;
+  letter-spacing: 0.44px;
+  margin-left: 10px;
+}
+.statistics-section .stat-content{
+  display: flex;
+  // justify-content: space-around;
+  opacity: 1;
+}
+// ---------------------------------------------------
+tr.mat-header-row, .mat-header-row{
+  background: #E3E9EF!important;
+  height: 45px!important;
+  color: #585FE8;
+  font-size: 14px;
+  border-bottom: none!important;
+}
+th.mat-header-cell {
+  border-bottom: none;
+  color: #000000;
+}
+td.mat-footer-cell{
+  color: #000000!important;
+}
+tr.mat-footer-row, tr.mat-row{
+  height: 65px;
+  // cursor: pointer!important;
+}
+.number{
+  font-size: 26px;
+  letter-spacing: 0.96px;
+  font-family: 'ManropeRegular';
+}
+.date{
+    color: #B3B8BD;
+    font-size: 12px;
+    letter-spacing: 0.44px;
+}
+.container{
+  margin: 20px;
+  .welcome-text{
+    color: #436129;
+    font-size: 22px;
+    font-family: "ManropeRegular";
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 7px;
+  }
+}
+.rupees_icon{
+  margin-top: -3px;
+  padding:12px 10px 10px 10px;
+  height: 45px;
+  width: 45px;
+  background: #14C700;
+  border-radius: 50%;
+}
+.total-revenue-rupee{
+  color: #4D4F5C;
+  font-family: 'ManropeRegular';
+  font-size: 25px;
+  margin-left: 10px;
+}
+.growth-percent{
+  color: #14C700;
+  font-size: 15px;
+  font-family: 'ManropeRegular';
+  text-align: right;
+}
+.growth-time{
+  color: #C1C8D8;
+  font-size: 11px;
+}
+.register-merchant{
+  vertical-align: middle;
+}
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell{
+  cursor: pointer!important;
+}
+.apexcharts-text tspan{
+  font-family: 'ManropeRegular'!important;
+}
+.first-row{
+  padding: 0 12px!important;
+}
+.increasedBy{
+  margin-top: 40px;
+  font-weight: 300;
+  font-size: 15px;
+  font-family: manropeMedium;
+}
+.btn-primary{
+  background: #1E1E1E!important;
+  color: #FFFFFF!important;
+}
+.btn-secondary{
+  background: #FFFFFF!important;
+  color: #1E1E1E!important;
+ 
+}
+.btn-primary,
+.btn-secondary{
+  border:1px solid #1E1E1E!important;
+  font-size: 15px;
+  padding:7px 18px;
+  border-radius: 5px;
+}
+#dashboard-project .btn-primary{
+  margin-right: 7px;
+}
+#dashboard-project{
+  .chart-subheading{
+    color:#52575D;
+    font-size:12px;
+    
+  }
+  .chart-heading{
+    color:#1E1E1E;
+    font-size:18px;
+    font-family: "ManropeBold";
+  }
+}
+.online-dot{
+  // display: inline-block;
+  position: relative;
+  margin: 0 0  0 30px;
+  font-weight: 300;
+  color: #43425D;
+  font-size:  12px;
+  font-family:'ManropeRegular';
+}
+.offline-dot:before{
+  background: #FF3E3F !important
+}
+.online-dot:before{
+  position: absolute;
+  content: '';
+  background: #2DCE98;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px; 
+  left: -15px;
+  top: 5px;
+  // display: block;
+  // margin:5px 0 0 20px;
+}
+// .cdk-column-country.mat-column-country{
+//   width: 200px;
+// }
+// .cdk-column-img.mat-column-img{
+//   width: 40px;
+// }
+
+.first-row,
+.d-flex{
+  flex-direction:row;
+}  
+// .apexchartstpzpkf08{
+//   min-height: 335px!important;
+// }
+.noDataAvail{
+  display: flex;
+  margin-top: 130px;
+  width: 100%;
+  // align-items: center;
+  justify-content: center;
+  color: #FFC954;
+  font-size: 25px;
+}

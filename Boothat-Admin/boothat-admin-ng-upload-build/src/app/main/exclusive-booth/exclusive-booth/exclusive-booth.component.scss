@@ -1,0 +1,22 @@
+.prmry-btn,
+.scnd-btn{
+    border-radius: 50%;
+    padding-bottom: 10px;
+}
+
+.prmry-btn mat-icon,
+.scnd-btn mat-icon{
+    
+    font-size: 15px !important;
+}
+.tableProduct{
+    
+    display:inline-block;
+    margin-right: 4px;
+    img{
+        border-radius: 3px;
+        width: 30px;
+        height:30px;
+        object-fit: cover;
+    }
+}

@@ -1,0 +1,246 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+    <div class="after-login-pages">
+        <mat-card>
+            <div class="first-row">
+                <div class="table-title">
+                    Wallet
+                </div>
+                <div class="d-flex">
+                    <div class="search-box" [ngClass]="{'search-box-with-data':search.value!=''}">
+                        <input #search placeholder="Search" [(ngModel)]="searchText">
+                        <span class="search-clear" (click)="clearSearch()">
+                            <mat-icon>close</mat-icon>
+                        </span>
+                        <span class="search-icon" (click)="filterData(search)">
+                            <mat-icon>search</mat-icon>
+                        </span>
+                    </div>
+                    <div class="custom-drop">
+                        <div class="status-drp ">
+                            <mat-icon>date_range</mat-icon>
+
+                            <mat-select placeholder="All" (selectionChange)="TimePeriodFilter($event)">
+
+                                <mat-option [value]="item.key" *ngFor="let item of Enums.TIME_FILTER | keyvalue">
+                                    {{item.value}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <mat-tab-group (focusChange)="tabChanged($event)" [selectedIndex]="0" animationDuration="1000ms">
+                <mat-tab label="Seller">
+                    <div>
+                        <table mat-table [dataSource]="dataSource | paginate:config " multiTemplateDataRows
+                            class="mat-elevation-z8">
+                            <ng-container matColumnDef="sr">
+                                <th mat-header-cell *matHeaderCellDef> S No. </th>
+                                <td mat-cell *matCellDef=" let i = dataIndex" (click)="$event.stopPropagation()">
+                                    {{(i+1)+((config.currentPage-1)*10)}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="transId">
+                                <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    <!-- <img [src]="element.photos_json | firstImgComaSepString" alt="" class="table-img"> -->
+                                    {{element.transactionId}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef> Date </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    {{element.created_date
+                                    | date }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef> Name </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+
+                                    {{(element.title.length > 12)?(element.title | slice:0:12
+                                    )+'...':(element.title) }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="type">
+                                <th mat-header-cell *matHeaderCellDef> Transaction Type </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+
+                                    {{(element.paymentMethod.length > 12)?(element.paymentMethod | slice:0:12
+                                    )+'...':(element.paymentMethod) }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="status">
+                                <th mat-header-cell *matHeaderCellDef> Status </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    {{element.transactionStatus?
+                                    'Complete':'Incomplete'}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="amount">
+                                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    <div class="d-flex justify-content-between">
+                                        {{element.currency_code}}
+                                        {{element.amount}}
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="view">
+                                <th mat-header-cell *matHeaderCellDef> </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <div class="view">
+                                        view
+                                    </div>
+                                </td>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="expandedDetail">
+                                <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                                    <div class="example-element-detail"
+                                        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                                        <div class="example-element-diagram">
+                                        </div>
+                                        <div class="example-element-description">
+
+                                            <div class="expanded-row">
+                                                <!-- <span class="bold">Description: </span> -->
+                                                <span class="expanded-content">{{element.description}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+                                [class.example-expanded-row]="expandedElement === element"
+                                (click)="expandedElement = expandedElement === element ? null : element">
+                            </tr>
+                            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row">
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="text-align:center">
+                        <h2 *ngIf="this.dataSource.length ==0">No Records Found !</h2>
+                        <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel="">
+                        </pagination-controls>
+                    </div>
+
+
+                </mat-tab>
+                <mat-tab label="Buyer">
+                    <div>
+                        <table mat-table [dataSource]="dataSource | paginate:config " multiTemplateDataRows
+                            class="mat-elevation-z8">
+                            <ng-container matColumnDef="sr">
+                                <th mat-header-cell *matHeaderCellDef> S No. </th>
+                                <td mat-cell *matCellDef=" let i = dataIndex" (click)="$event.stopPropagation()">
+                                    {{(i+1)+((config.currentPage-1)*10)}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="transId">
+                                <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    <!-- <img [src]="element.photos_json | firstImgComaSepString" alt="" class="table-img"> -->
+                                    {{element.transactionId}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef> Date </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    {{element.created_date
+                                    | date }} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef> Name </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    {{element.title}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="type">
+                                <th mat-header-cell *matHeaderCellDef> Transaction Type </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    {{element.paymentMethod}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="status">
+                                <th mat-header-cell *matHeaderCellDef> Status </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    {{element.transactionStatus?
+                                    'Complete':'Incomplete'}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="amount">
+                                <th mat-header-cell *matHeaderCellDef> Amount </th>
+                                <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                                    <div class="d-flex justify-content-between">
+                                        {{element.currency_code}}
+                                        {{element.amount}}
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="view">
+                                <th mat-header-cell *matHeaderCellDef> </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <div class="view">
+                                        view
+                                    </div>
+                                </td>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="expandedDetail">
+                                <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                                    <div class="example-element-detail"
+                                        [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                                        <div class="example-element-diagram">
+                                        </div>
+                                        <div class="example-element-description">
+
+                                            <div class="expanded-row">
+                                                <span class="expanded-content">{{element.description}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+                                [class.example-expanded-row]="expandedElement === element"
+                                (click)="expandedElement = expandedElement === element ? null : element">
+                            </tr>
+                            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row">
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="text-align:center">
+                        <h2 *ngIf="this.dataSource.length ==0">No Records Found !</h2>
+                        <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel="">
+                        </pagination-controls>
+                    </div>
+
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card>
+    </div>
+</div>

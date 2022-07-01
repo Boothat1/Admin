@@ -1,0 +1,17 @@
+<div class="manage-dailog">
+    <div class="close-btn" (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+    </div>
+    <form action="" class="form">
+        <div class="form-field">
+            <label>{{this.data.name | titlecase}} Type</label>
+            <input type="text" matInput>
+        </div>
+       
+        <div class="btn-group">
+            <button type="button" class="restrict-btn">Add</button>
+            <!-- <button type="button" class="remove-btn">Delete</button> -->
+        </div>
+    </form>
+
+</div>

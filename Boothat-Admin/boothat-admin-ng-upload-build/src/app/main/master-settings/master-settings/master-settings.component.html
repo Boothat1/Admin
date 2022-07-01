@@ -1,0 +1,87 @@
+<div class="wrapper master">
+    <mat-tab-group (focusChange)="tabChanged($event)" [selectedIndex]="0">
+        <mat-tab label="Terms & Conditions">
+            <mat-card>
+                <form action="">
+                    <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input matInput name="pageNameOne" [(ngModel)]="tabPageData.name">
+                    </mat-form-field>
+                </form>
+                <quill-editor [modules]="quillConfig" (contentChanged)="quillContentChanged($event)" placeholder=""
+                    [(ngModel)]="tabPageData.description">
+                </quill-editor>
+                <div class="btn-group">
+                    <button class="restrict-btn"
+                        (click)="updatePage(1,tabPageData.name,tabPageData.description)"
+                        [disabled]="tabPageData.name == undefined ||tabPageData.description == undefined">Save</button>
+                    <!-- <button class="remove-btn">Cancel</button> -->
+                </div>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="Privacy & Policy">
+            <mat-card>
+                <form action="">
+                    <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input matInput name="pageName" [(ngModel)]="tabPageData.name">
+                    </mat-form-field>
+                </form>
+                <quill-editor [modules]="quillConfig" (contentChanged)="quillContentChanged($event)" placeholder=""
+                    [(ngModel)]="tabPageData.description">
+                    
+                </quill-editor>
+                <div class="btn-group">
+                    <button class="restrict-btn"
+                        (click)="updatePage(2,tabPageData.name,tabPageData.description)"
+                        [disabled]="tabPageData.name == undefined ||tabPageData.description == undefined">
+                        Save
+                    </button>
+                    <!-- <button class="remove-btn">Cancel</button> -->
+                </div>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="About Us">
+            <mat-card class="">
+                <form action="">
+                    <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input matInput name="pageNameThree" [(ngModel)]="tabPageData.name">
+                    </mat-form-field>
+                </form>
+                <quill-editor [modules]="quillConfig" (contentChanged)="quillContentChanged($event)" placeholder=""
+                    [(ngModel)]="tabPageData.description">
+                </quill-editor>
+                <div class="btn-group">
+                    <button class="restrict-btn"
+                        (click)="updatePage(3,tabPageData.name,tabPageData.description)"
+                        [disabled]="tabPageData.name == undefined ||tabPageData.description == undefined">
+                        Save
+                    </button>
+                 
+                </div>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="FAQ">
+            <mat-card class="">
+                <form action="">
+                    <mat-form-field class="example-full-width title-mat-form-feild" appearance="fill">
+                        <mat-label>Title</mat-label>
+                        <input matInput name="pageNameThree" [(ngModel)]="tabPageData.name">
+                    </mat-form-field>
+                </form>
+                <quill-editor [modules]="quillConfig" (contentChanged)="quillContentChanged($event)" placeholder=""
+                    [(ngModel)]="tabPageData.description">
+                </quill-editor>
+                <div class="btn-group">
+                    <button class="restrict-btn"
+                        (click)="updatePage(3,tabPageData.name,tabPageData.description)"
+                        [disabled]="tabPageData.name == undefined ||tabPageData.description == undefined">
+                        Save
+                    </button>
+                 
+                </div>
+            </mat-card>
+        </mat-tab>
+    </mat-tab-group>
+</div>

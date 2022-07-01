@@ -1,0 +1,129 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- CENTER -->
+    <div style="padding: 30px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this._commonService.goBack()" #back>
+                        arrow_back
+                    </span>
+                    <span class="page-title">
+                       
+                        Promo Code
+                    </span>
+                </div>
+                <button type="submit" mat-flat-button class="decline-btn" *ngIf="this.paramId"
+                        (click)="deletePromo(this.paramId)">Delete</button>
+            </div>
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            
+            <form [formGroup]="promoForm" (ngSubmit)="submit()">
+                <div class="d-flex form justify-content-around flex-wrap">
+                    <div class="form-field">
+                        <label>Type</label>
+                        <div class="">
+                            <mat-select placeholder="Single Time Use" formControlName="useType" class="secondary_input">
+                                <mat-option [value]="item.key" *ngFor="let item of benfitType | keyvalue">
+                                    {{item.value}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="promoForm.get('useType').touched
+                                              && promoForm.get('useType').hasError('required')">
+                                Required*
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Promo Code</label>
+                        <div class="">
+                            <input type="text" matInput formControlName="promoCode" maxlength="10" minlength="3"  class="secondary_input"  
+
+                            (input)="code.value=$event.target.value.toUpperCase()"
+                            (keypress)="alphaNumberOnly($event)" #code>
+                            <mat-error *ngIf="promoForm.get('promoCode').touched
+                            && promoForm.get('promoCode').hasError('required')">
+                              Required*
+                            </mat-error>
+                            <!-- <mat-error *ngIf="promoForm.get('promoCode').touched
+                            && promoForm.get('promoCode').hasError('pattern')">
+                             All letters should be in capital or in Numbers and there shouldn't be space anywhere.
+                            </mat-error> -->
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-field">
+                        <label>description</label>
+                        <input type="text" matInput formControlName="description">
+                        <mat-error *ngIf="promoForm.get('description').touched
+                                         && promoForm.get('description').hasError('required')">
+                                Required*   
+                        </mat-error>
+                    </div> -->
+
+                    
+                    <!-- <div class="form-field">
+                        <label>points</label>
+                        <input type="number" matInput formControlName="points">
+                        <mat-error *ngIf="promoForm.get('points').touched
+                                         && promoForm.get('points').hasError('required')">
+                                Required*   
+                        </mat-error>
+                    </div> -->
+                    
+                    <!-- <div class="form-field" (click)="picker.open()">
+                        <label>expiryDate</label>
+                        <input type="text" [min]="dobMax" class="cust-input" readonly [matDatepicker]="picker"
+                            formControlName="expiryDate">
+                            <mat-error *ngIf="promoForm.get('expiryDate').touched
+                            && promoForm.get('expiryDate').hasError('required')">
+                                Required*   
+                            </mat-error>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </div> -->
+                    
+                    <div class="form-field">
+                        <label>Promo Type</label>
+                        <div class="">
+                            <mat-select placeholder="Discount" formControlName="promoType" class="secondary_input">
+                                <mat-option [value]="item.key" *ngFor="let item of discountType | keyvalue">
+                                    {{item.value}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="promoForm.get('promoType').touched
+                                              && promoForm.get('promoType').hasError('required')">
+                                Required*
+                            </mat-error>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label>Add {{this.promoForm.get('promoType').value ==='2'? 'Price':'Discount(%)'}}</label>
+                        <input type="number" matInput formControlName="discount" class="secondary_input" 
+                        (keypress)="percentageOnly($event)">
+                        <mat-error *ngIf="promoForm.get('discount').touched
+                            && promoForm.get('discount').hasError('required')">
+                                Required*   
+                        </mat-error>
+                        <mat-error *ngIf="promoForm.get('discount').touched
+                        && promoForm.get('discount').hasError('pattern')">
+                           value must be in percentage
+                    </mat-error>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button 
+                    type="submit" 
+                    mat-flat-button 
+                    class="save-btn " 
+                    [disabled]="!this.promoForm.valid"
+                    [innerHTML]="this.paramId? 'Edit':'Generate'">ADD</button>
+                    <!-- {{!this.promoForm.valid && this.croppedImageBase64==''}} <br>
+                    {{!this.promoForm.valid}} <br>
+                    {{this.croppedImageBase64==''}} -->
+                </div>
+            </form>
+        </mat-card>
+    </div>
+</div>

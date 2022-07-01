@@ -1,0 +1,174 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- CENTER -->
+    <div style="padding: 30px 20px;">
+        <mat-card>
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this.commonService.goBack()">
+                        arrow_back
+                    </span>
+                    <span class="table-title">
+
+                        Product Details
+                    </span>
+                </div>
+                <div>
+                    <button type="submit" mat-flat-button class="save-btn accept" routerLink="/product-manage/detail"
+                        [queryParams]="{'id':this.productDetail?.productId}">View Original</button>
+                </div>
+            </div>
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <!-- <div class="first-row">
+                <div class="table-subtitle">
+                    Seller Details
+                </div>
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field position-relative">
+                    <label>Seller Name</label>
+                    <input type="text" matInput disabled 
+                    [value]="">
+                    <mat-icon matPrefix class="my-icon"><span class="material-icons">
+                            visibility
+                        </span>
+                    </mat-icon>
+                   
+                </div>
+                <div class="form-field">
+                    <label>Email Id</label>
+                    <input type="text" matInput disabled 
+                    [value]="''">
+                </div>
+                <div class="form-field">
+                    <label>Mobile Number</label>
+                    <input type="text" matInput disabled 
+                    [value]="''">
+                </div>
+            </div> -->
+            <!-- <div class="first-row">
+                <div class="table-subtitle">
+                    Product Details
+                </div>
+            </div> -->
+            <div class="d-flex form justify-content-around flex-wrap">
+                
+                <div class="form-field">
+                    <label>Title</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.product_name?this.productDetail.product_name:''">
+                </div>
+                <!-- <div class="form-field">
+                    <label>Sub Heading</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.detailService?.singleProduct?.subHeading? this.detailService.singleProduct?.subHeading:''">
+                </div> -->
+               
+                <div class="form-field">
+                    <label>Condition</label>
+                    <input type="text" matInput disabled [value]="this.productDetail?.conditions? 'New ': 'Old' ">
+                </div>
+                <div class="form-field">
+                    <label>Brand</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.brand?this.productDetail.brand:''">
+                </div>
+                <div class="form-field textarea ">
+                    <label>Description</label>
+                    <textarea disabled
+                    rows="7"
+                    style=" resize: vertical;" 
+                    [value]="this.productDetail?.description?this.productDetail.description:''"></textarea>
+                </div>
+                <div class="form-field">
+                    <label>Date Posted</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.datePosted | date ">
+                </div>
+                <div class="form-field">
+                    <label>Order Id</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.orderId ? this.productDetail.orderId : '' ">
+                </div>
+                <!-- <div class="form-field">
+                    <label>MRP</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productManageService.singleProduct?.mrp?this.productManageService.singleProduct?.mrp:''">
+                </div> -->
+                <div class="form-field">
+                    <label>Currency</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.currency ? this.productDetail.currency : ''">
+                </div>
+                <div class="form-field">
+                    <label>Price</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.price ? this.productDetail.price : ''"    >
+                </div>
+                <div class="form-field">
+                    <label>Discount in (%)</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.discount ? this.productDetail.discount : ''" >
+                </div>
+                <div class="form-field">
+                    <label>Final Price</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.final_price ? this.productDetail.final_price : ''">
+                </div>
+               
+               
+
+               
+
+                <!-- <div class="form-field">
+                    <label>Pending Orders</label>
+                    <input type="text" matInput disabled 
+                    [value]="'0'">
+                </div>
+                <div class="form-field"></div> -->
+                
+              
+                <div class="form-field textarea width-50">
+                    <label>Color</label>
+                    <textarea type="text" matInput disabled
+                    [value]="this.colors? this.colors  :''"></textarea>
+                </div>
+                <div class="form-field textarea width-50">
+                    <label>Size</label>
+                    <textarea type="text" matInput disabled
+                    [value]="this.sizes? this.sizes  :''
+                    "></textarea>
+                </div>
+                
+                <div class="form-field">
+                    <label>Quantity</label>
+                    <input type="text" matInput disabled 
+                    [value]="this.productDetail?.quantity ? this.productDetail.quantity : ''">
+                </div>
+                <div class="form-field"></div>
+                <div class="form-field"></div>
+                <!-- <div class="form-field textarea">
+                    <label>Rejection Reason</label>
+                    <textarea disabled 
+                    style=" resize: vertical;" 
+                    rows="7"
+                    [value]="''" class="reject-reason"></textarea>
+                </div> -->
+                <div class="form-field image" *ngFor="let image of this.productPhotos;let i=index">
+                    <img [src]="image" alt="" *ngIf="i<4" class="product-img">
+                </div>
+            </div>
+            
+            <div class="btn-group">
+                <!-- <button 
+                [ngClass]="this.singleMerchant?.status? 'action-btn':'decline-btn'"
+                [innerHTML]="this.singleMerchant?.status==1?'Enable':'Disable'"
+                mat-flat-button class="action-btn"
+                (click)="confirmDailog(this.singleMerchant.status,this.singleMerchant.id)"></button> -->
+            </div>
+            
+        </mat-card>
+    </div>
+</div>

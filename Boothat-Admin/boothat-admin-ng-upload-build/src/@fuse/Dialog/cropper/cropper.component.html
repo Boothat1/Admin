@@ -1,0 +1,28 @@
+<mat-dialog-content>
+    <div class="w-full">
+        <!-- <h3 style="margin-top: 0px;"> Crop Image </h3> -->
+        <div class="label-section">
+            <div>Crop this image</div>
+            <div>Image preview</div>
+        </div>
+        <!-- cropper -->
+        <div style="display: flex;align-items: center;justify-content: space-around;">
+            <image-cropper [transform]="{scale:(sliderVal*0.01)+1}" style="width: 50%;"
+                [imageChangedEvent]="imageChangedEvent" [imageFile]="imageFileToCrop" [maintainAspectRatio]="true"
+                [aspectRatio]="ratio" format="png" (imageCropped)="imageCropped($event)"
+                (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+            <img [ngStyle]="{height:ratio<1?'200px':'auto',width:ratio<1?'auto':'50%'}" [src]="croppedImageBase64"
+                style="width:50%;" />
+        </div>
+    </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end" style="display: flex;justify-content: space-between;border-top: 1px solid gray;">
+    <mat-slider thumbLabel [(ngModel)]="sliderVal" min="1" max="100"></mat-slider>
+    <div>
+        <button mat-flat-button class="cust-btn" mat-dialog-close tabindex="-1" (click)="onCropClick()">Crop</button>
+        <button mat-flat-button class="bg-gray text-contrast-black" mat-dialog-close tabindex="-1">Cancel</button>
+    </div>
+</mat-dialog-actions>

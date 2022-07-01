@@ -1,0 +1,132 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll return_request">
+    <div class="after-login-pages">
+        <mat-card>
+            <div class="first-row">
+                <div class="table-title">
+                    Return Requests
+                </div>
+                <div class="d-flex">
+                    <div class="search-box" [ngClass]="{'search-box-with-data':search.value!=''}">
+                        <input #search placeholder="Search" [(ngModel)]="searchText" (keyup.enter)="filterData(search)">
+                        <span class="search-clear" (click)="clearSearch()">
+                            <mat-icon>close</mat-icon>
+                        </span>
+                        <span class="search-icon" (click)="filterData(search)">
+                            <mat-icon>search</mat-icon>
+                        </span>
+                    </div>
+
+                    <div class="status-drp">
+
+                        <mat-select placeholder="All" (selectionChange)="approvalFilter($event)">
+                            <mat-option [value]="item.key" *ngFor="let item of Enums.RETURN_REQUEST | keyvalue">
+                                {{item.value}}
+                            </mat-option>
+                        </mat-select>
+
+                    </div>
+                </div>
+            </div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <div class="project-table">
+            <table mat-table [dataSource]="dataSource | paginate:config " multiTemplateDataRows
+                class="mat-elevation-z8">
+                <ng-container matColumnDef="sr">
+                    <th mat-header-cell *matHeaderCellDef> S No. </th>
+                    <td mat-cell *matCellDef=" let i = dataIndex">
+                        {{(i+1)+((config.currentPage-1)*10)}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Products </th>
+                    <td mat-cell *matCellDef="let element">
+                        <img [src]="element.photos_json | firstImgComaSepString" alt="" class="table-img">
+                        {{element.product_name}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.created_date
+                        | date }} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="buyer">
+                    <th mat-header-cell *matHeaderCellDef> Buyer Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.userName}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="seller">
+                    <th mat-header-cell *matHeaderCellDef> Seller Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.shopName}}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> action </th>
+                    <td mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                        <div class="d-flex justify-content-between">
+                            <button mat-stroked-button disabled [style.color]="element.returnStatus==2?'green':'red'"
+                                  *ngIf="element.returnStatus==2 || element.returnStatus==3"  >{{element.returnStatus==2? 'Approved':'Rejected'}}</button>
+                            <button class="prmry-btn" (click)="requestAction(element.id,2)"
+                                [style.display]="element.returnStatus==2 || element.returnStatus==3 ? 'none':'' ">
+                                <mat-icon style="color: #fff;">
+                                    check
+                                </mat-icon>
+                            </button>
+                            <button class="scnd-btn" (click)="requestAction(element.id,3)"
+                                [style.display]="element.returnStatus==2 || element.returnStatus==3? 'none':''">
+                                <mat-icon style="color: #fff;">
+                                    clear
+                                </mat-icon>
+                            </button>
+                            <button mat-stroked-button routerLink="/orders/detail"
+                                [queryParams]="{'id':element.orderId}">
+                                view
+                            </button>
+                        </div>
+
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="expandedDetail">
+                    <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length" >
+                        <div class="example-element-detail"
+                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="example-element-diagram">
+                            </div>
+                            <div class="example-element-description">
+                                <div class="expanded-row">
+                                    <span class="bold">Reason: </span> <span
+                                        class="expanded-content">{{element.title}}</span>
+                                </div>
+                                <div class="expanded-row">
+                                    <span class="bold">Description: </span> <span
+                                        class="expanded-content">{{element.description}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+                    [class.example-expanded-row]="expandedElement === element"
+                    (click)="expandedElement = expandedElement === element ? null : element">
+                </tr>
+                <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+            </table>
+            </div>
+           
+            <div style="text-align:center">
+                <h2 *ngIf="this.dataSource.length ==0">No Records Found !</h2>
+                <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel="">
+                </pagination-controls>
+            </div>
+        </mat-card>
+
+    </div>
+</div>

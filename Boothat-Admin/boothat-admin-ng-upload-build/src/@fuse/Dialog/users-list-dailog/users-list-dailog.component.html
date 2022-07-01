@@ -1,0 +1,67 @@
+<div style="padding: 10px;">
+    <table mat-table [dataSource]="dataSource | paginate: { itemsPerPage: 9, currentPage : p,id:'first' }"
+        class=" mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="sr">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element; let i = index" (click)="openUserDailog(element)"> {{i+1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="images">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> <img src="{{element.images}}"
+                    alt=""> </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="joinDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Join Date </th>
+            <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.joinDate}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="mobile">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile No. </th>
+            <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.mobile}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+            <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.city}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element">
+                <button class="scnd-btn" (click)="openUserDailog(element)">
+                    <mat-icon>
+                        <img src="assets/images/tia/res_icon.svg" alt="">
+                    </mat-icon>
+                </button>
+                <button class="prmry-btn" (click)="confirmDailog()">
+                    <mat-icon>
+                        <img src="assets/images/tia/delete_icon.svg" alt="">
+                    </mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <div style="text-align:center">
+        <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" id='first'>
+        </pagination-controls>
+    </div>
+</div>

@@ -1,0 +1,289 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+    <div style="padding: 40px 20px;">
+        <mat-card style="padding-bottom:40px;">
+            <div class="first-row">
+                <div>
+                    <span class="material-icons goBackBtn" (click)="this.commonService.goBack()">
+                        arrow_back
+                    </span>
+                    <span class="page-title">
+                        Seller Details
+                    </span>
+                </div>
+                <div>
+                    <div>
+                        <button class="decline-btn" mat-flat-button
+                            (click)="softDelete(this.detailService.singleMerchant?.user.id)">Delete</button>
+                    </div>
+                    <!-- <button type="submit" mat-flat-button class="save-btn accept">Edit</button> -->
+                    <!-- <div style="display:inline-block">
+                        <div class="status-drp">
+                            <mat-select placeholder="this week" >
+                                <mat-option [value]="item.id" *ngFor="let item of selectData">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div style="padding-top: 10px;"></div>
+            <mat-divider inset="true"></mat-divider>
+            <div style="padding-top:20px ;"></div>
+            <form [formGroup]="detailOverview">
+                <div class="d-flex form justify-content-around flex-wrap">
+                    <div class="form-field">
+
+
+                    </div>
+                    <div class="form-field">
+                        <div class="profile-file">
+                            <img [src]="this.detailService.singleMerchant?.user.photo? this.detailService.singleMerchant?.user?.photo:'assets/icons/dist-profile-blank.png'"
+                                height="200" [ngClass]="this.detailService.singleMerchant?.photo? '':'borderImg'">
+                        </div>
+                    </div>
+                    <div class="form-field">
+
+
+                    </div>
+                    <div class="form-field">
+                        <label>First Name</label>
+                        <input type="text" matInput formControlName="first_name"
+                            [value]="this.detailService.singleMerchant?.user.first_name? this.detailService.singleMerchant?.user.first_name:''"
+                            readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Last Name</label>
+                        <input type="text" matInput formControlName="last_name"
+                            [value]="this.detailService.singleMerchant?.user?.last_name? this.detailService.singleMerchant?.user?.last_name:''"
+                            readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Username</label>
+                        <input type="text" matInput formControlName="username"
+                            [value]="this.detailService.singleMerchant?.user?.last_name? this.detailService.singleMerchant?.user?.last_name:''"
+                            readonly>
+                    </div>
+
+                    <div class="form-field">
+                        <label>Email ID</label>
+                        <input type="text" matInput formControlName="email"
+                            [value]="this.detailService.singleMerchant?.user.email? this.detailService.singleMerchant?.user?.email:''" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Mobile Number</label>
+                        <input type="text" matInput formControlName="mobile"
+                            [value]="this.detailService.singleMerchant?.user.phone? this.detailService.singleMerchant?.user?.phone:''" readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Country</label>
+                        <input type="text" matInput formControlName="country"
+                            [value]="this.detailService.singleMerchant?.user?.country? this.detailService.singleMerchant?.user?.country:''"
+                            readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Alternate Email</label>
+                        <input type="text" matInput formControlName="alter_email"
+                            [value]="this.detailService.singleMerchant?.shop?.alternateEmail? this.detailService.singleMerchant?.shop?.alternateEmail:''"
+                            readonly>
+                    </div>
+                    <div class="form-field">
+                        <label>Alternate Mobile Number</label>
+                        <input type="text" matInput formControlName="alter_phone"
+                            [value]="this.detailService.singleMerchant?.user.alternatePhone ? this.detailService.singleMerchant?.user.alternatePhone:''"
+                            readonly>
+                    </div>
+                    <div class="form-field">
+
+                    </div>
+
+
+                </div>
+
+
+
+            </form>
+        </mat-card>
+        <mat-card style="margin-top:20px">
+            <div class="first-row">
+
+                <div class="page-title">
+                    Shop Details
+                </div>
+
+                <!-- <div style="margin-right: 15px;">
+                    <button class="save-btn accept " mat-flat-button
+                    [style.display]="isPassFormVisibile? 'none':''"
+                    (click)="isPassFormVisibile = true">Edit
+                        </button>
+                </div> -->
+            </div>
+            <div class="d-flex form justify-content-around flex-wrap">
+                <div class="form-field"></div>
+                <div class="form-field">
+                    <div class="profile-file">
+                        <img [src]="this.detailService.singleMerchant?.shop?.photo? this.detailService.singleMerchant?.shop?.photo:'assets/icons/dist-profile-blank.png'"
+                            height="200" [ngClass]="this.detailService.singleMerchant?.photo? '':'borderImg'">
+                    </div>
+                </div>
+                <div class="form-field"></div>
+                <div class="form-field position-relative">
+                    <label> Ratings </label>
+                    <!-- <div class="star-rating">
+                    <img src="assets/images/coin.png" alt="">
+                    <img src="assets/images/coin.png" alt="" >
+                    <img src="assets/images/coin.png" alt="" >
+                    <img src="assets/images/coin.png" alt="" >
+                    <img src="assets/images/coin.png" alt="" >
+                    </div> -->
+                    <input type="text" matInput 
+                        [value]="this.detailService.singleMerchant?.shop?.ratings? this.detailService.singleMerchant?.shop?.ratings:'0' "
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Followers</label>
+                    <input type="text" matInput 
+                        [value]="this.detailService.singleMerchant?.user?.followers? this.detailService.singleMerchant?.user?.followers:'0'"
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Products Selling</label>
+                    <input type="text" matInput 
+                        [value]="this.detailService.singleMerchant?.user?.productsSelling ? this.detailService.singleMerchant?.user?.productsSelling:'0'"
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Shop Handle</label>
+                    <input type="text" matInput
+                        [value]="this.detailService.singleMerchant?.shop?.handle? this.detailService.singleMerchant?.shop?.handle:''" readonly>
+                </div>
+                <div class="form-field">
+                    <label>Market Place</label>
+                    <input type="text" matInput
+                        [value]="this.detailService.singleMerchant?.shop?.marketPlace? this.detailService.singleMerchant?.shop?.marketPlace:''"
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>WhatsApp Number</label>
+                    <input type="text" matInput
+                        [value]="this.detailService.singleMerchant?.shop?.whatsappNumber?this.detailService.singleMerchant?.shop?.whatsappNumber:''"
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Instagram Link</label>
+                    <input type="text" matInput
+                        [value]="this.detailService.singleMerchant?.shop?.instagramProfile? this.detailService.singleMerchant?.shop?.instagramProfile:''"
+                        readonly>
+                </div>
+                <div class="form-field">
+                    <label>Website Link</label>
+                    <input type="text" matInput
+                        [value]="this.detailService.singleMerchant?.shop?.website? this.detailService.singleMerchant?.shop?.website:''" readonly>
+                </div>
+                <div class="form-field">
+
+                </div>
+                <div class="form-field width100">
+                    <label>Description</label>
+                    <textarea type="text" matInput
+                    style=" resize: vertical;" 
+                        [value]="this.detailService.singleMerchant?.user?.description ? this.detailService.singleMerchant?.user?.description:''"
+                        readonly matInput></textarea>
+                </div>
+            </div>
+            <div class="first-row">
+
+                <div class="reset-pass-heading">
+                    Edit Information
+                </div>
+
+                <div style="margin-right: 15px;">
+                    <button class="save-btn accept " mat-flat-button [style.display]="isPassFormVisibile? 'none':''"
+                        (click)="isPassFormVisibile = true">Edit
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="isPassFormVisibile">
+                <div class="form d-flex">
+                    <div class="sixty-percent radios-notifications">
+                        <mat-radio-group aria-label="Select an option" [(ngModel)]="editInfoType">
+                            <mat-radio-button value="1" style="margin:0 10px ;" (change)="selectEditInfo($event)">Change
+                                Password</mat-radio-button>
+                            <mat-radio-button value="2" (change)="selectEditInfo($event)">Change Mobile Number
+                            </mat-radio-button>
+                        </mat-radio-group>
+
+                    </div>
+                    <div class="form-field">
+
+                    </div>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="editInfoType == 1">
+                    <div class="d-flex form justify-content-around flex-wrap">
+
+                        <div class="form-field">
+                            <label>Password</label>
+                            <input type="password" matInput formControlName="password" class="secondary_input"
+                                (input)="validatePassword()">
+                            <mat-error *ngIf="form.get('password').touched
+                            && form.get('password').hasError('required')">
+                                Required*
+                            </mat-error>
+                        </div>
+                        <div class="form-field">
+                            <label>Confirm Password</label>
+                            <input type="password" matInput formControlName="confirm_password" class="secondary_input"
+                                (input)="validatePassword()">
+                            <mat-error *ngIf="form.get('confirm_password')?.touched
+                            && form.get('confirm_password')?.hasError('required')">
+                                Required*
+                            </mat-error>
+                            <p *ngIf="!pasStatus" class="err">
+                                New Password And Confirm Password Must Be Same
+                            </p>
+                        </div>
+                        <div class="form-field">
+
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="save-btn" mat-flat-button type="submit">Save</button>
+
+                    </div>
+                </form>
+                <div *ngIf="editInfoType == 2">
+                    <form  [formGroup]="changeMobileForm" (ngSubmit)="editMerchent()">
+                        <div class="d-flex form justify-content-around flex-wrap">
+                            <div class="form-field justify-content-around flex-wrap">
+                                <!-- <label>Country Code</label>
+                                <input type="number" matInput class="secondary_input" formControlName="countryCode"> -->
+                                <label>Mobile Number</label>
+                                <input type="number" matInput class="secondary_input" 
+                                formControlName="number"    
+                                minlength="10"
+                                [value]="this.detailService?.singleMerchant?.user?.phone"
+                                >
+                                <mat-error *ngIf="this.changeMobileForm.get('number').touched && this.changeMobileForm.get('number').hasError('required')">
+                                    Required*
+                                </mat-error>
+                                <!-- <mat-error *ngIf="this.changeMobileForm.get('number').touched && this.changeMobileForm.get('number').hasError('pattern')">
+                                    Mobile Number Pattern Is Not Correct
+                                </mat-error> -->
+                            </div>
+                            <div class="form-field">
+                               
+                            </div>
+                            <div class="form-field"></div>
+
+                        </div>
+                        <div class="text-center">
+                            <button class="save-btn" mat-flat-button type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+.remove-btn,
+.restrict-btn{
+    background: #D10101;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 14px;
+    width: 40%;
+    // font-family: 'lexendRegular';
+}
+.remove-btn{
+    background: #FFE6E2;
+    color: #D10101;
+    margin-left: 15px;
+}
+.btn-group{
+    padding: 0 30px;
+    text-align: center;
+}
+.close-btn{
+    text-align: right;
+    margin: -10px -10px 0 0;
+    cursor: pointer;
+    user-select: none;
+    color: #969B9F;
+}
+.manage-dailog img{
+    width: 135px;
+    height: 135px;
+    border-radius: 50%;
+}
+.open-users{
+    position: absolute;
+    top:33px;
+    right: 5px;
+    cursor: pointer;
+    color: #969B9F;
+}

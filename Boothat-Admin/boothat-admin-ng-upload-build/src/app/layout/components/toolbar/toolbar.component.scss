@@ -1,0 +1,232 @@
+@import "@fuse/scss/fuse";
+
+toolbar {
+  position: sticky;
+  display: flex;
+  flex: 0 0 auto;
+  top: 0;
+  z-index: 4;
+ 
+
+  &.below {
+    z-index: 2;
+  }
+
+  .icon {
+    cursor: pointer;
+    margin: 0px 10px;
+  }
+
+  .avatar {
+    border: 1px solid #0a4b6d;
+    padding: 10px;
+    object-fit: fill;
+  }
+  body.theme-green-light .tool-profile{
+  object-fit: scale-down!important;
+  border: 1px solid #0a4b6d;
+}
+  .mat-toolbar {
+    position: relative;
+    background: #FFC954 !important;
+    color: inherit !important; 
+   
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    .logo-icon {
+      width: 38px;
+    }
+  }
+
+  .user-button,
+  fuse-search-bar,
+  .language-button,
+  .chat-panel-toggle-button,
+  .quick-panel-toggle-button {
+    min-width: 64px;
+    height: 64px;
+    
+    @include media-breakpoint("xs") {
+      height: 56px;
+    }
+  }
+
+  .navbar-toggle-button {
+    
+    min-width: 56px;
+    height: 56px;
+  }
+
+  .toolbar-separator {
+    height: 64px;
+    height: 75px!important;
+    width: 1px;
+
+    @include media-breakpoint("xs") {
+      height: 56px;
+    }
+  }
+}
+
+//mat menu user profile
+
+.profile-wrapper {
+  position: relative;
+  //   margin-top:-20px ;
+}
+
+.mat-menu-panel {
+  margin-right: 8px;
+  width: 270px;
+  overflow: visible !important;
+}
+.profile {
+  overflow: visible !important;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    right: 26px;
+    // border-bottom:12px solid var(--primary-color);
+    border-bottom: 12px solid white;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+  }
+  padding: 15px !important;
+  // background: var(--primary-color) !important;
+  background: white !important;
+  height: 65px !important;
+  // color: white !important;
+  color: black !important;
+  border-bottom: 1px solid black !important;
+  img {
+    vertical-align: middle;
+    object-fit:scale-down!important;
+    border:1px solid #ccc!important;
+  }
+  .name {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 12px;
+    margin: 0px;
+  }
+  .about {
+    margin: 0px;
+    line-height: 12px;
+    font-size: 10px;
+    white-space: normal;
+    margin-right: 10px;
+  }
+  .logout-btn {
+    width: 75px;
+  }
+  // .tool-profile{
+  //   object-fit: scale-down!important;
+  // }
+}
+
+.mat-menu-content {
+  padding: 0px !important;
+}
+
+.toolbar-shadow {
+  box-shadow: 0px 2px 10px #ccc;
+}
+
+.notification-badge .mat-badge-content {
+  right: 15px !important;
+  top: 2px !important;
+  background: #000000;
+  width: 8px;
+  border-radius: 50%;
+  height: 8px;
+  line-height: 13px;
+  font-size: 8px;
+}
+.search-icon img{
+  width: 26px;
+  height: 26px;
+  margin: 15px;
+  cursor: pointer;
+}
+.search-box{
+  border: none;
+  background: #FFC954;
+  margin: 20px 5px;
+    input{
+    min-width: 350px;
+    font-size: 15px;
+    background-color: #FFC954;
+    font-family: 'ManropeRegular';
+    &::placeholder{
+      color: #000000;
+      font-size: 15px;
+    }
+    &:focus{
+      .search-icon{
+        background: transparent;
+        color: #000000!important;
+      }
+    }
+  }
+  .search-icon{
+    top: 14px;
+    mat-icon{
+      color: #000000!important;
+
+    }
+  }
+}
+.search-box{
+  &:focus-within {
+    .search-icon{
+      color: #BCBCCB!important;
+      background: transparent;
+      top: 10px!important;
+    }
+}
+}
+.notification-badge{
+  border-right: 1px solid #000;
+
+  img{
+    width: 16px;
+    height: 16px;
+    margin-top:10px ;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+}
+.search-box-with-data .search-icon{
+  background: transparent;
+  top: 10px!important;
+  user-select: none;
+}
+.search-box-with-data .search-clear{
+  top: 9px;
+  user-select: none;
+}
+.search-box-with-data input{
+  padding: 7px 45px 7px 7px;
+}
+.profile-name-main{
+  font-weight: 400;
+}
+.toolbar-shadow.mat-toolbar.mat-toolbar-single-row{
+  height: 75px!important;
+}
+.logo-tool .tool-profile{
+  border: 1px solid #1e1e1e!important;
+  object-fit: scale-down!important;
+}
+.mat-toolbar-row{
+  background:#0a4b6d!important;
+  color: #fff!important;
+  .dialog-title{
+    font-size:22px;
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="87" height="88" viewBox="0 0 87 88">
+  <g id="icon_upload" transform="translate(-0.407)">
+    <g id="Ellipse_39" data-name="Ellipse 39" transform="translate(0.407)" fill="none" stroke="#1e1e1e" stroke-width="1">
+      <ellipse cx="43.5" cy="44" rx="43.5" ry="44" stroke="none"/>
+      <ellipse cx="43.5" cy="44" rx="43" ry="43.5" fill="none"/>
+    </g>
+    <g id="Ellipse_40" data-name="Ellipse 40" transform="translate(6.134 6.134)" fill="none" stroke="#1e1e1e" stroke-width="3">
+      <circle cx="37.722" cy="37.722" r="37.722" stroke="none"/>
+      <circle cx="37.722" cy="37.722" r="36.222" fill="none"/>
+    </g>
+    <circle id="Ellipse_41" data-name="Ellipse 41" cx="30.362" cy="30.362" r="30.362" transform="translate(13.494 13.494)" fill="#1e1e1e"/>
+    <path id="Path_344" data-name="Path 344" d="M24.239,13.4,13.748.629a1.858,1.858,0,0,0-2.873,0L.384,13.4A1.86,1.86,0,0,0,1.82,16.444H7.1v16.58a1.852,1.852,0,0,0,1.858,1.858h6.713a1.852,1.852,0,0,0,1.858-1.858V16.444H22.8A1.86,1.86,0,0,0,24.239,13.4Z" transform="translate(31.327 26.67)" fill="#efefef"/>
+  </g>
+</svg>

@@ -1,0 +1,61 @@
+<div class="dialog-content-wrapper">
+    <mat-toolbar class="m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Ticket Type Details</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-24 m-0 " fusePerfectScrollbar>
+
+        <form class="form" [formGroup]="form">
+            <!-- <div fxLayout="row" fxLayoutGap="5px" class="form-title">
+                        <p>Personal Details</p>
+                    </div> -->
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div class="form-field mx-0" style="width: 100%;">
+                    <label>New Ticket Type<span class="err"> *</span></label>
+                    <input type="text" formControlName="typeName" matInput>
+                    <span class="err" style="display: block;"
+                        *ngIf="form.get('typeName').hasError('required') && form.get('typeName').touched">
+                        Please enter Ticket type
+                    </span>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div class="form-field mx-0" style="width: 100%;">
+                    <label>Ticket Description</label>
+                    <textarea formControlName="desc" matInput></textarea>
+                </div>
+            </div>
+            <div fxLayout="row" fxLayoutGap="5px">
+                <div fxFlex fxLayout="column" fxLayoutGap="5px">
+                    <div class="position-relative mx-auto" style="display: inline-block;">
+                        <img *ngIf="form.value.icon" [src]="previewUrl" style="height: auto;max-width: 200px;">
+                        <mat-icon *ngIf="form.value.icon" class="position-absolute"
+                            style="cursor: pointer;top:5px;right:5px;text-shadow: 0px 1px 10px #0000007d;color: white;"
+                            (click)="removeImage()">
+                            cancel</mat-icon>
+                    </div>
+
+                    <input type="file" #fileUpload (change)="readUrl($event)" style="display: none;">
+                    <button *ngIf="!previewUrl" mat-flat-button class="cust-btn"
+                        (click)="fileUpload.click()">{{form.value.icon?'Icon Selected':'Upload Icon'}}</button>
+
+                    <span class="err" style="display:block" *ngIf="!isImageValid">Only JPEG, JPG & PNG file
+                        allowed</span>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16 pt-0" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+
+        <button mat-flat-button color="primary" [mat-dialog-close]="[false]">Cancel</button>
+        <button mat-flat-button class="cust-btn" (click)="onSubmit()" [disabled]="!form.valid">Submit</button>
+    </div>
+</div>

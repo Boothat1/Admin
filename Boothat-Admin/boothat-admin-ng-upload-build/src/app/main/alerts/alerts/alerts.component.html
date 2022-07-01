@@ -1,0 +1,64 @@
+<div id="products" class="page-layout carded fullwidth inner-scroll">
+
+    <!-- CENTER -->
+    <div class="center">
+        <!-- HEADER -->
+        <div class="header" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+            fxLayoutAlign.gt-sm="space-between center">
+            <div class="first-row">
+                <span class="page-title">
+                    Alerts
+                </span>
+                
+
+                <!-- ADD BUTTON -->
+
+            </div>
+        </div>
+    </div>
+    <div style="padding: 10px;">
+        <mat-card>
+            <table mat-table [dataSource]="dataSource | paginate: { itemsPerPage: 10, currentPage : p,id:'first' }"
+                class=" mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="report_type">
+                    <th mat-header-cell *matHeaderCellDef > Report Type </th>
+                    <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.report_type}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="reported_plants">
+                    <th mat-header-cell *matHeaderCellDef > Report Plant </th>
+                    <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.reported_plants}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="user">
+                    <th mat-header-cell *matHeaderCellDef> User </th>
+                    <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.user}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.date}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="city">
+                    <th mat-header-cell *matHeaderCellDef> City </th>
+                    <td mat-cell *matCellDef="let element" (click)="openUserDailog(element)"> {{element.city}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div style="text-align:center">
+                <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" id='first'>
+                </pagination-controls>
+            </div>
+        </mat-card>
+    </div>
+</div>

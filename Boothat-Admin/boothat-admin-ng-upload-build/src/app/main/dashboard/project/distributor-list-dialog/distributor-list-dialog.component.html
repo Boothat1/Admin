@@ -1,0 +1,36 @@
+<div class="dialog-content-wrapper">
+    <!-- <mat-toolbar class="m-0">
+        <mat-toolbar-row fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+            <span class="title dialog-title">Distributors</span>
+            <button mat-icon-button (click)="matDialogRef.close()" aria-label="Close dialog">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar> -->
+
+    <div mat-dialog-content class="m-0 p-0" fusePerfectScrollbar>
+        <!-- <p *ngIf="!_data.events?.length">No events available to assign selected verifier</p> -->
+
+
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">
+                    <img class="profile-img"
+                        [src]="element.profileImage?element.profileImage:'assets/icons/dist-profile-blank.png'">
+                    <span class="dist-name">{{element.name}}</span> </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr (click)="onDistributorClick(row.id)" class="cursor-pointer" mat-row
+                *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+
+    </div>
+
+    <div mat-dialog-actions class="m-0 p-16 " fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+        <button mat-flat-button color="primary" [mat-dialog-close]="false">Close</button>
+    </div>
+</div>
